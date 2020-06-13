@@ -19,11 +19,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20,
     paddingBottom: 20
-  },
-  img: {
-    width: 100,
-    height: 100,
-    borderRadius: 50
   }
 })
 
