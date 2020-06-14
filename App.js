@@ -1,25 +1,53 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+// In App.js in a new project
 
-const App = () => {
+import * as React from 'react';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>개신기하네</Text>
+      <Text>Home Screen</Text>
+      <Button
+        title="Move to Details Screen"
+        onPress={() => navigation.navigate('Details')}
+      />
     </View>
-  )
+  );
+}
+
+function DetailsScreen() {
+  return (
+    <View style={styles.container}>
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'normal',
+          },
+        }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    color: 'black',
-    fontSize: 20,
-    paddingBottom: 20
-  }
-})
+  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+});
 
 export default App;
