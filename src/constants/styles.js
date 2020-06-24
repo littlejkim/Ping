@@ -20,13 +20,10 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
   },
   footer: {
-    flex: 1,
+    height: 70,
     flexDirection: 'row',
     justifyContent: 'space-between',
     // alignItems: 'center',
     backgroundColor: '#fff',
-  },
-  buttonContainer: {
-    flex: 1,
   },
 });

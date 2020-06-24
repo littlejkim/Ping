@@ -1,13 +1,17 @@
 import React from 'react';
-import {Text, View, Button} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../constants/styles';
-
+import CustomButton from '../components/CustomButton';
 export default function Join({route, navigation}) {
   const {depthId} = route.params;
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button onPress={() => navigation.popToTop()} title="Exit      " />
+        <TouchableOpacity
+          style={{marginRight: 20}}
+          onPress={() => navigation.popToTop()}>
+          <Text style={{color: 'white', fontSize: 15}}>나가기</Text>
+        </TouchableOpacity>
       ),
     });
   }, [navigation]);
@@ -17,15 +21,16 @@ export default function Join({route, navigation}) {
         <Text>Depth: {depthId}</Text>
       </View>
       <View style={styles.footer}>
-        <View style={styles.buttonContainer}>
-          <Button title="Back" onPress={() => navigation.goBack()} />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Next"
-            onPress={() => navigation.push('Create', {depthId: depthId + 1})}
-          />
-        </View>
+        <CustomButton
+          buttonColor={'#023e71'}
+          title={'뒤로가기'}
+          onPress={() => navigation.goBack()}
+        />
+        <CustomButton
+          buttonColor={'gray'}
+          title={'다음'}
+          onPress={() => navigation.push('Join', {depthId: depthId + 1})}
+        />
       </View>
     </View>
   );
