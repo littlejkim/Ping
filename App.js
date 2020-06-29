@@ -5,15 +5,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Create from './src/screens/Create';
 import Welcome from './src/screens/Welcome';
 import Join from './src/screens/Join';
-import {Button} from 'react-native';
-
+import Menu from './src/screens/Menu';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="Menu"
         screenOptions={{
           headerTintColor: 'black',
           headerStyle: {backgroundColor: '#fff'},
@@ -34,6 +33,7 @@ export default function App() {
           component={Join}
           options={{title: '방 참여'}}
         />
+        <Stack.Screen name="Menu" component={Menu} options={{title: 'Menu'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
