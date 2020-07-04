@@ -21,18 +21,14 @@ export default function App() {
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          options={{title: '핑'}}
+          options={{title: 'Ping'}}
         />
         <Stack.Screen
           name="Create"
           component={Create}
-          options={{title: '방 만들기'}}
+          options={{title: 'Create'}}
         />
-        <Stack.Screen
-          name="Join"
-          component={Join}
-          options={{title: '방 참여'}}
-        />
+        <Stack.Screen name="Join" component={Join} options={{title: 'Join'}} />
         <Stack.Screen name="Menu" component={Menu} options={{title: 'Menu'}} />
       </Stack.Navigator>
     </NavigationContainer>

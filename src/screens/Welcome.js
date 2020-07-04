@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import styles from '../constants/styles';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../components/CustomFooterButton';
 export default function Welcome({navigation}) {
   return (
     <View style={styles.container}>

@@ -26,4 +26,9 @@ export default StyleSheet.create({
     // alignItems: 'center',
     backgroundColor: '#fff',
   },
+  menuContainer: {
+    flex: 1,
+    // marginVertical: 0,
+    flexDirection: 'column',
+  },
 });
