@@ -3,26 +3,10 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomFooterButton';
 import database from '@react-native-firebase/database';
-
+import {testGet, testSet} from '../Utils/fbtestfunctions';
 export default function dbtest({navigation}) {
     const[query, setQuery] = useState("");
 
-    function testset(){
-        database().ref('/users/123').set({
-            name: 'YoungDo',
-            age: 26,
-          });
-          
-    }
-
-    function testget(){
-        database()
-  .ref('/users/123')
-  .once('value')
-  .then(snapshot => {
-    setQuery(JSON.stringify(snapshot.toJSON()));
-  });
-    }
 
   return (
     <View style={styles.container}>
@@ -33,12 +17,12 @@ export default function dbtest({navigation}) {
         <CustomButton
           buttonColor={'#023e71'}
           title={'set'}
-          onPress={() => testset()}
+          onPress={() => testSet()}
         />
         <CustomButton
           buttonColor={'gray'}
           title={'get'}
-          onPress={() => testget()}
+          onPress={() => testGet().then((res) => setQuery(res))}
         />
       </View>
     </View>
