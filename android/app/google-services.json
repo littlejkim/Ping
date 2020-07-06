@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "303962247748",
+    "firebase_url": "https://ping-b6db7.firebaseio.com",
+    "project_id": "ping-b6db7",
+    "storage_bucket": "ping-b6db7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303962247748:android:2e141ed147d9e378e8e211",
+        "android_client_info": {
+          "package_name": "com.ping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303962247748-2lgorv8ioomt826u5c3jhf8fb4cs0i05.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ping",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "303962247748-1mf4caikgjv2o9dpa34av8dhvpd1oha3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzDNy_uADbyEIPigNbqjN0wEiJpwptOi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303962247748-1mf4caikgjv2o9dpa34av8dhvpd1oha3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
