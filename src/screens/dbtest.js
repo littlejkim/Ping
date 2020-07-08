@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomFooterButton';
 import database from '@react-native-firebase/database';
 import {testGet, testSet} from '../Utils/fbtestfunctions';
+
 export default function dbtest({navigation}) {
     const[query, setQuery] = useState("");
 

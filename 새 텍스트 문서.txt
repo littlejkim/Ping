@@ -1,0 +1,37 @@
+fR6uU7N0SCyeo-s33s34Oy
+"fR6uU7N0SCyeo-s33s34Oy"
+"fR6uU7N0SCyeo-s33s34Oy"
+"fR6uU7N0SCyeo-s33s34Oy"
+
+/* Room:
+    title:,
+    menus:{
+      menu1:#ofvotes,
+      menu2:#ofvotes,
+      menu3:#ofvotes,
+      ...
+    },
+    price:,
+    time:,
+    voters:{
+      voter1:{
+        menu:,
+        vPrice:,
+	vTime:
+      },
+      voter2:{
+        menu:,
+        vPrice:,
+	vTime:
+      },
+      voter3:{
+        menu:,
+        vPrifvgce:,
+	vTime:
+      },
+      voter4{...},
+      voter5{...},
+      ...
+    }
+
+    */

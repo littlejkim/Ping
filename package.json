@@ -13,6 +13,7 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-firebase/app": "^8.0.1",
     "@react-native-firebase/database": "^7.2.7",
+    "@react-native-firebase/dynamic-links": "^7.3.1",
     "@react-native-firebase/iid": "^7.1.9",
     "@react-navigation/material-top-tabs": "^5.2.12",
     "@react-navigation/native": "^5.5.1",
@@ -23,7 +24,8 @@
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.5",
     "react-native-screens": "^2.9.0",
-    "react-native-tab-view": "^2.14.4"
+    "react-native-tab-view": "^2.14.4",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.10.2",
