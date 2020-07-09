@@ -5,17 +5,16 @@ async function testSet() {
   database()
     .ref(`/test/${instance}`)
     .set({
-      'menu': 'mom\'s spaghetti',
-      'priceLow': 5000,
-      'priceHigh':20000,
-      'distanceLow':1,
-      'distanceHigh':3,
-      'objtest':{
-        'asdf':'asdf',
-        'asdlf;kj':'asdlk;fj',
-        'qwepoiru':'qwoeipur'
-      }
-      
+      menu: "mom's spaghetti",
+      priceLow: 5000,
+      priceHigh: 20000,
+      distanceLow: 1,
+      distanceHigh: 3,
+      objtest: {
+        asdf: 'asdf',
+        'asdlf;kj': 'asdlk;fj',
+        qwepoiru: 'qwoeipur',
+      },
     });
 }
 
@@ -26,11 +25,9 @@ function testGet() {
       .ref(`/test/${instance}`)
       .once('value')
       .then(snapshot => {
-         resolve(JSON.stringify(snapshot.toJSON()));
+        resolve(JSON.stringify(snapshot.toJSON()));
       });
-
-  })
-
+  });
 }
 /* Room:
     title:,

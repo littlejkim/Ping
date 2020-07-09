@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../constants/styles';
-import CustomButton from '../components/CustomFooterButton';
+import CustomButton from '../components/CustomButton';
 export default function Create({route, navigation}) {
   const {depthId} = route.params;
   React.useLayoutEffect(() => {

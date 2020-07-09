@@ -33,6 +33,9 @@ const formatData = data => {
 };
 
 export default class ManuFlatList1 extends Component {
+  constructor(props, context) {
+    super(props, context);
+  }
   renderItem = ({item, index}) => {
     if (item.empty === true) {
       return <View style={[styles.item, styles.itemInvisible]} />;
