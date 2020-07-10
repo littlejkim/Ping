@@ -7,7 +7,7 @@ import {testGet, testSet, testRT} from '../utils/fbtestfunctions';
 
 export default function dbtest({navigation}) {
   const [query, setQuery] = useState('');
-  const [realTime, setRealTime] = useState();
+  const [realTime, setRealTime] = useState('');
   useEffect(() =>{
     testRT().then((res)=>setRealTime(res));
   })
