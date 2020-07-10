@@ -29,6 +29,17 @@ function testGet() {
       });
   });
 }
+
+function testRT(){
+  return new Promise(async (resolve, reject) => {
+    database()
+      .ref(`/test`)
+      .on('value', snapshot => {
+        resolve(JSON.stringify(snapshot.toJSON()));
+      });
+  });
+};
+
 /* Room:
     title:,
     menus:{
@@ -66,4 +77,4 @@ function testGet() {
     }
 
     */
-export {testSet, testGet};
+export {testSet, testGet, testRT};
