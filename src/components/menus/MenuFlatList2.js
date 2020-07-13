@@ -29,29 +29,25 @@ const formatData = data => {
   return data;
 };
 
-export default class ManuFlatList2 extends Component {
-  renderItem = ({item, index}) => {
-    if (item.empty === true) {
-      return <View style={[styles.item, styles.itemInvisible]} />;
-    }
-    return (
-      <TouchableOpacity style={styles.item}>
-        <Text style={styles.itemText}>
-          {item.key}
-          {item.img}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-
-  render() {
-    return (
-      <FlatList
-        data={formatData(data)}
-        style={styles.container}
-        renderItem={this.renderItem}
-        numColumns={2}
-      />
-    );
-  }
+export default function ManuFlatList1() {
+  return (
+    <FlatList
+      data={formatData(data)}
+      style={styles.container}
+      renderItem={({item, index}) => {
+        if (item.empty === true) {
+          return <View style={[styles.item, styles.itemInvisible]} />;
+        }
+        return (
+          <TouchableOpacity style={styles.item}>
+            <Text style={styles.itemText}>
+              {item.key}
+              {item.img}
+            </Text>
+          </TouchableOpacity>
+        );
+      }}
+      numColumns={2}
+    />
+  );
 }

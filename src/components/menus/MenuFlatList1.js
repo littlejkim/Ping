@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {TouchableOpacity, Text, View, FlatList} from 'react-native';
 import styles from '../../constants/menuStyles';
+import {MenuContext} from '../../screens/Menu';
 
 const data = [
   {key: 'pizza', img: '1'},
@@ -32,32 +33,26 @@ const formatData = data => {
   return data;
 };
 
-export default class ManuFlatList1 extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-  renderItem = ({item, index}) => {
-    if (item.empty === true) {
-      return <View style={[styles.item, styles.itemInvisible]} />;
-    }
-    return (
-      <TouchableOpacity style={styles.item}>
-        <Text style={styles.itemText}>
-          {item.key}
-          {item.img}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-
-  render() {
-    return (
-      <FlatList
-        data={formatData(data)}
-        style={styles.container}
-        renderItem={this.renderItem}
-        numColumns={2}
-      />
-    );
-  }
+export default function ManuFlatList1() {
+  const {menus} = React.useContext(MenuContext);
+  return (
+    <FlatList
+      data={formatData(data)}
+      style={styles.container}
+      renderItem={({item, index}) => {
+        if (item.empty === true) {
+          return <View style={[styles.item, styles.itemInvisible]} />;
+        }
+        return (
+          <TouchableOpacity style={styles.item}>
+            <Text style={styles.itemText}>
+              {item.key}
+              {item.img}
+            </Text>
+          </TouchableOpacity>
+        );
+      }}
+      numColumns={2}
+    />
+  );
 }

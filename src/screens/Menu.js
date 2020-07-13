@@ -1,50 +1,45 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+
+import {View} from 'react-native';
 import CustomButton from '../components/CustomButton';
 import styles from '../constants/styles';
-import MenuNavigation from '../navigation/MenuNavigation';
-import ActionCreator from '../actions/index';
-import {connect} from 'react-redux';
+import MenuFlatList1 from '../components/menus/MenuFlatList1';
+import MenuFlatList2 from '../components/menus/MenuFlatList2';
+import MenuFlatList3 from '../components/menus/MenuFlatList3';
 
-class App extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-  render() {
-    return (
+const Tab = createMaterialTopTabNavigator();
+export const MenuContext = React.createContext();
+
+export default function Menu() {
+  const menus = [
+    {
+      name: 'pizza',
+      occupied: true,
+    },
+  ];
+  return (
+    <MenuContext.Provider value={{menus}}>
       <View style={styles.menuContainer}>
         <MenuNavigation />
         <View style={styles.footer}>
-          <Text>{this.props.count}</Text>
-          <CustomButton
-            buttonColor={'#023e71'}
-            title={'다음'}
-            onPress={() => this.props.menuAdd(1)}
-          />
+          <CustomButton buttonColor={'#023e71'} title={'다음'} />
         </View>
       </View>
-    );
-  }
+    </MenuContext.Provider>
+  );
 }
 
-function mapStateToProps(state) {
-  return {
-    count: state.count,
-  };
+function MenuNavigation() {
+  const {menus} = React.useContext(MenuContext);
+  console.log(menus);
+  return (
+    <MenuContext.Provider value={menus}>
+      <Tab.Navigator>
+        <Tab.Screen name="Menu1" component={MenuFlatList1} />
+        <Tab.Screen name="Menu2" component={MenuFlatList2} />
+        <Tab.Screen name="Menu3" component={MenuFlatList3} />
+      </Tab.Navigator>
+    </MenuContext.Provider>
+  );
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    menuAdd: num => {
-      dispatch(ActionCreator.menuAdd(num));
-    },
-    menuDelete: num => {
-      dispatch(ActionCreator.menuDelete(num));
-    },
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
