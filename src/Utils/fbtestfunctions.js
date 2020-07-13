@@ -1,12 +1,14 @@
 import database from '@react-native-firebase/database';
 import iid from '@react-native-firebase/iid';
+var rdn;
 async function testSet() {
   var instance = await iid().get();
+  var rand = Math.floor(Math.random() * Math.floor(100));
   database()
-    .ref(`/test/${instance}`)
+    .ref(`/test/${rand}`)
     .set({
       menu: "mom's spaghetti",
-      priceLow: 5000,
+      priceLow: rand,
       priceHigh: 20000,
       distanceLow: 1,
       distanceHigh: 3,
@@ -16,6 +18,7 @@ async function testSet() {
         qwepoiru: 'qwoeipur',
       },
     });
+    rdn = rand;
 }
 
 function testGet() {
@@ -30,15 +33,16 @@ function testGet() {
   });
 }
 
-function testRT(){
-  return new Promise(async (resolve, reject) => {
-    database()
-      .ref(`/test`)
-      .on('value', snapshot => {
-        resolve(JSON.stringify(snapshot.toJSON()));
-      });
-  });
-};
+// function testRT(){
+//   return new Promise(async (resolve, reject) => {
+//     database()
+//       .ref(`/test`)
+//       .on('value', snapshot => {
+//         resolve(JSON.stringify(snapshot.toJSON()));
+//       });
+      
+//   });
+// };
 
 /* Room:
     title:,
@@ -77,4 +81,4 @@ function testRT(){
     }
 
     */
-export {testSet, testGet, testRT};
+export {testSet, testGet};

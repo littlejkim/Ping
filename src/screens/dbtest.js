@@ -3,14 +3,23 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {testGet, testSet, testRT} from '../utils/fbtestfunctions';
+import {testGet, testSet, testRT} from '../Utils/fbtestfunctions';
 
 export default function dbtest({navigation}) {
   const [query, setQuery] = useState('');
   const [realTime, setRealTime] = useState('');
   useEffect(() =>{
-    testRT().then((res)=>setRealTime(res));
-  })
+      const onValueChange = database()
+        .ref(`/test`)
+        .on('value', snapshot => {
+          setRealTime(JSON.stringify((snapshot.val())))
+        });
+      return () =>
+        database()
+          .ref(`/test`)
+          .off('value', onValueChange);
+    }, [realTime]);
+  
   return (
     <View style={styles.container}>
       <View style={styles.content}>
