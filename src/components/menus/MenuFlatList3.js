@@ -1,15 +1,7 @@
 import React, {Component} from 'react';
 import {TouchableOpacity, Text, View, FlatList} from 'react-native';
 import styles from '../../constants/menuStyles';
-
-const data = [
-  {key: 'tennis', img: '1'},
-  {key: 'soccer', img: '2'},
-  {key: 'football', img: '3'},
-  {key: 'tabletennis', img: '4'},
-  {key: 'golf', img: '5'},
-  {key: 'baseball', img: '6'},
-];
+import {MenuContext} from '../../screens/Menu';
 
 const numColumns = 2;
 
@@ -28,17 +20,23 @@ const formatData = data => {
   return data;
 };
 
+export function selected(index) {
+  console.log(index);
+}
+
 export default function ManuFlatList1() {
+  const {menuData} = React.useContext(MenuContext);
+
   return (
     <FlatList
-      data={formatData(data)}
+      data={formatData(menuData.menu3)}
       style={styles.container}
       renderItem={({item, index}) => {
         if (item.empty === true) {
           return <View style={[styles.item, styles.itemInvisible]} />;
         }
         return (
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={() => selected(index)}>
             <Text style={styles.itemText}>
               {item.key}
               {item.img}

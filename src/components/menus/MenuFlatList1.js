@@ -3,19 +3,6 @@ import {TouchableOpacity, Text, View, FlatList} from 'react-native';
 import styles from '../../constants/menuStyles';
 import {MenuContext} from '../../screens/Menu';
 
-const data = [
-  {key: 'pizza', img: '1'},
-  {key: 'chicken', img: '2'},
-  {key: 'pasta', img: '3'},
-  {key: 'burrito', img: '4'},
-  {key: 'jaehoon', img: '5'},
-  {key: 'jesus', img: '6'},
-  {key: 'kebab', img: '7'},
-  {key: 'icecream', img: '8'},
-  {key: 'john', img: '9'},
-  {key: 'jacob', img: '10'},
-];
-
 const numColumns = 2;
 
 const formatData = data => {
@@ -33,18 +20,23 @@ const formatData = data => {
   return data;
 };
 
+export function selected(index) {
+  console.log(index);
+}
+
 export default function ManuFlatList1() {
-  const {menus} = React.useContext(MenuContext);
+  const {menuData} = React.useContext(MenuContext);
+
   return (
     <FlatList
-      data={formatData(data)}
+      data={formatData(menuData.menu1)}
       style={styles.container}
       renderItem={({item, index}) => {
         if (item.empty === true) {
           return <View style={[styles.item, styles.itemInvisible]} />;
         }
         return (
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={() => selected(index)}>
             <Text style={styles.itemText}>
               {item.key}
               {item.img}

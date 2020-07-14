@@ -1,0 +1,31 @@
+export const menuData = {
+  menu1: [
+    {key: 'pizza', img: '1'},
+    {key: 'chicken', img: '2'},
+    {key: 'pasta', img: '3'},
+    {key: 'burrito', img: '4'},
+    {key: 'jaehoon', img: '5'},
+    {key: 'jesus', img: '6'},
+    {key: 'kebab', img: '7'},
+    {key: 'icecream', img: '8'},
+    {key: 'john', img: '9'},
+    {key: 'jacob', img: '10'},
+  ],
+  menu2: [
+    {key: 'blue', img: '1'},
+    {key: 'black', img: '2'},
+    {key: 'gray', img: '3'},
+    {key: 'white', img: '4'},
+    {key: 'red', img: '5'},
+    {key: 'blue', img: '6'},
+    {key: 'none', img: '7'},
+  ],
+  menu3: [
+    {key: 'tennis', img: '1'},
+    {key: 'soccer', img: '2'},
+    {key: 'football', img: '3'},
+    {key: 'tabletennis', img: '4'},
+    {key: 'golf', img: '5'},
+    {key: 'baseball', img: '6'},
+  ],
+};
