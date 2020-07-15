@@ -33,6 +33,26 @@ function testGet() {
   });
 }
 
+function testIncre(){
+  const reference = database().ref(`/test/count`);
+  return reference.transaction(currentCnt => {
+    if (currentCnt === null) return 1;
+    return currentCnt + 1;
+  });
+}
+function testDecre(){
+  const reference = database().ref(`/test/count`);
+  return reference.transaction(currentCnt => {
+    if (currentCnt !== null && currentCnt>0) return currentCnt-1;
+    return 0;
+  });
+}
+
+// When post "567" is liked
+// onPostLike('567').then(transaction => {
+//   console.log('New post like count: ', transaction.snapshot.val());
+    
+// }
 // function testRT(){
 //   return new Promise(async (resolve, reject) => {
 //     database()
@@ -81,4 +101,6 @@ function testGet() {
     }
 
     */
-export {testSet, testGet};
+
+
+export {testSet, testGet,testIncre,testDecre};
