@@ -24,7 +24,7 @@ export default function Dbtest({navigation}) {
     <View style={styles.container}>
       <View style={styles.content}>
         {/* <Text>set/get = {query}</Text> */}
-        <Text>realTime test = {realTime}</Text>
+        <Text>realTimeDB transaction test count = {realTime}</Text>
       </View>
       <View style={styles.footer}>
         <CustomButton
