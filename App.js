@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-import dbtest from './src/screens/dbtest';
+import Dbtest from './src/screens/Dbtest';
 import Create from './src/screens/Create';
 import Welcome from './src/screens/Welcome';
 import Join from './src/screens/Join';
 import Menu from './src/screens/Menu';
+// import Dbtest from './src/screens/Dbtest2';
 
 const Stack = createStackNavigator();
 
@@ -33,8 +33,8 @@ export default function App() {
         <Stack.Screen name="Join" component={Join} options={{title: 'Join'}} />
         <Stack.Screen name="Menu" component={Menu} options={{title: 'Menu'}} />
         <Stack.Screen
-          name="dbtest"
-          component={dbtest}
+          name="Dbtest"
+          component={Dbtest}
           options={{title: 'test'}}
         />
       </Stack.Navigator>
