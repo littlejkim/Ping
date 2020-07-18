@@ -20,7 +20,7 @@ const formatData = data => {
   return data;
 };
 
-export default function ManuFlatList1() {
+export default function MenuFlatList2() {
   const {menuData} = React.useContext(MenuContext);
   return (
     <FlatList

@@ -14,7 +14,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Dbtest"
+        initialRouteName="Menu"
         screenOptions={{
           headerTintColor: 'black',
           headerStyle: {backgroundColor: '#fff'},

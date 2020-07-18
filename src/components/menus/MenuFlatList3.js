@@ -24,7 +24,7 @@ export function selected(index) {
   console.log(index);
 }
 
-export default function ManuFlatList1() {
+export default function MenuFlatList3() {
   const {menuData} = React.useContext(MenuContext);
 
   return (
