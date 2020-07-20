@@ -4,16 +4,26 @@ import styles from '../../constants/menuStyles';
 import {MenuContext} from '../../screens/Menu';
 
 export default function ManuFlatList1() {
-  function selectedItems(index) {
-    setSelected(index);
-    console.log(selected);
-  }
-  const [selected, setSelected] = useState({
-    selected: null,
-  });
   const {menuData} = React.useContext(MenuContext);
+  const [selected, setSelected] = useState({
+    renderedData: menuData.menu1,
+  });
+
+  function selectedItems(index) {
+    let renderData = [...selected.renderedData];
+    for (let data of renderData) {
+      if (data.id == index) {
+        data.selected = data.selected == null ? true : !data.selected;
+        break;
+      }
+    }
+    setSelected({renderedData: renderData});
+  }
+
   return (
     <FlatList
+      extraData={selected.renderedData}
+      keyExtractor={item => item.id.toString()}
       data={formatData(menuData.menu1)}
       style={styles.container}
       renderItem={({item, index}) => {
@@ -22,11 +32,15 @@ export default function ManuFlatList1() {
         }
         return (
           <TouchableOpacity
-            style={styles.item}
+            style={
+              item.selected === true
+                ? styles.itemSelected
+                : styles.itemNotSelected
+            }
             onPress={() => selectedItems(index)}>
             <Text style={styles.itemText}>
-              {item.key}
-              {item.img}
+              {item.id}
+              {item.menu}
             </Text>
           </TouchableOpacity>
         );
