@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {testGet, testSet, testIncre, testDecre} from '../utils/fbtestfunctions';
+import {testGet, testSet, testIncre, testDecre} from '../Utils/fbtestfunctions';
 
 export default function Dbtest({navigation}) {
   // const [query, setQuery] = useState('');
@@ -34,7 +34,7 @@ export default function Dbtest({navigation}) {
         />
         <CustomButton
           buttonColor={'gray'}
-          title={'decre'}
+          title={'Create Room'}
           onPress={() => testDecre()}
         />
       </View>
