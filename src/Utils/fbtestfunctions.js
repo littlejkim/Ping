@@ -1,5 +1,6 @@
 import database from '@react-native-firebase/database';
 import iid from '@react-native-firebase/iid';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 var rdn;
 async function testSet() {
   var instance = await iid().get();
@@ -48,6 +49,18 @@ function testDecre(){
   });
 }
 
+async function buildLink() {
+  var instance = await iid().get();
+  const link = await dynamicLinks().buildLink({
+    link: 'https://vote.pls.page.link?room='+ instance,
+    // domainUriPrefix is created in your Firebase console
+    domainUriPrefix: 'https://votepls.page.link',
+    // optional set up which updates Firebase analytics campaign
+    // "banner". This also needs setting up before hand
+  });
+
+  return link;
+}
 // When post "567" is liked
 // onPostLike('567').then(transaction => {
 //   console.log('New post like count: ', transaction.snapshot.val());
@@ -103,4 +116,4 @@ function testDecre(){
     */
 
 
-export {testSet, testGet,testIncre,testDecre};
+export {testSet, testGet,testIncre,testDecre,buildLink};

@@ -3,11 +3,10 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {testGet, testSet, testIncre, testDecre} from '../utils/fbtestfunctions';
-
+import {testGet, testSet, testIncre, testDecre,buildLink} from '../utils/fbtestfunctions';
+import iid from '@react-native-firebase/iid';
 export default function LinkTest({route, navigation}) {
-  const {roomNumber} = route.params;
-  // const [query, setQuery] = useState('');
+  const [link, setLink] = useState('');
   // const [realTime, setRealTime] = useState('');
   // useEffect(() => {
   //   const onValueChange = database()
@@ -25,7 +24,7 @@ export default function LinkTest({route, navigation}) {
     <View style={styles.container}>
       <View style={styles.content}>
         {/* <Text>set/get = {query}</Text> */}
-        <Text>roomNumber = {roomNumber}</Text>
+        <Text>link={link} </Text>
       </View>
       <View style={styles.footer}>
         <CustomButton
@@ -36,7 +35,7 @@ export default function LinkTest({route, navigation}) {
         <CustomButton
           buttonColor={'gray'}
           title={'Create Room'}
-          onPress={() => testDecre()}
+          onPress={() => setLink(buildLink())}
         />
       </View>
     </View>
