@@ -52,7 +52,7 @@ function testDecre(){
 async function buildLink() {
   var instance = await iid().get();
   const link = await dynamicLinks().buildLink({
-    link: 'https://vote.pls.page.link?room='+ instance,
+    link: 'https://vote.pls.page.link?room='+ instance+"&x=aasdf&y=asdffffff",
     // domainUriPrefix is created in your Firebase console
     domainUriPrefix: 'https://votepls.page.link',
     // optional set up which updates Firebase analytics campaign
@@ -60,6 +60,16 @@ async function buildLink() {
   });
 
   return link;
+}
+
+function parseUrl(url){
+  let regex = /[?&]([^=#]+)=([^&#]*)/g,
+  params = {},
+  match
+  while ((match = regex.exec(url))) {
+    params[match[1]] = match[2]
+  }
+  return params;
 }
 // When post "567" is liked
 // onPostLike('567').then(transaction => {
@@ -116,4 +126,4 @@ async function buildLink() {
     */
 
 
-export {testSet, testGet,testIncre,testDecre,buildLink};
+export {testSet, testGet,testIncre,testDecre,buildLink,parseUrl};
