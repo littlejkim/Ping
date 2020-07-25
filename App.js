@@ -6,6 +6,7 @@ import Create from './src/screens/Create';
 import Welcome from './src/screens/Welcome';
 import Join from './src/screens/Join';
 import Menu from './src/screens/Menu';
+import Price from './src/screens/Price';
 import Dbtest from './src/Tests/Dbtest2';
 import LinkTest from './src/Tests/LinkTest';
 const Stack = createStackNavigator();
@@ -14,7 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Menu"
+        initialRouteName="Price"
         screenOptions={{
           headerTintColor: 'black',
           headerStyle: {backgroundColor: '#fff'},
@@ -32,6 +33,11 @@ export default function App() {
         />
         <Stack.Screen name="Join" component={Join} options={{title: 'Join'}} />
         <Stack.Screen name="Menu" component={Menu} options={{title: 'Menu'}} />
+        <Stack.Screen
+          name="Price"
+          component={Price}
+          options={{title: 'Price'}}
+        />
         <Stack.Screen
           name="Dbtest"
           component={Dbtest}
