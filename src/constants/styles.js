@@ -31,4 +31,17 @@ export default StyleSheet.create({
     // marginVertical: 0,
     flexDirection: 'column',
   },
+  pickerContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  pickerTitle: {
+    // flex: 1,
+    color: 'black',
+    // fontFamily: 'SFProText-Semibold',
+    fontSize: 24,
+    marginBottom: 31,
+  },
 });

@@ -1,23 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-// import styles from '../constants/styles';
+import {View, Text} from 'react-native';
+import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
-import RNPickerSelect from 'react-native-picker-select';
 import Picker from '../components/picker/Picker';
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    color: 'white',
-    // fontFamily: 'SFProText-Semibold',
-    fontSize: 24,
-    marginBottom: 31,
-  },
-});
+
 const start = 1900;
 const values = new Array(new Date().getFullYear() - start + 1)
   .fill(0)
@@ -31,9 +17,14 @@ export default function Price({navigation}) {
   const defaultValue = 1990 - start;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>What year were you born?</Text>
-      <Picker {...{values, defaultValue}} />
+    <View style={{flex: 1}}>
+      <View style={styles.pickerContainer}>
+        {/* <Text style={styles.pickerTitle}>Select Price</Text> */}
+        <Picker {...{values, defaultValue}} />
+      </View>
+      <View style={styles.footer}>
+        <CustomButton buttonColor={'#023e71'} title={'다음'} />
+      </View>
     </View>
   );
 }

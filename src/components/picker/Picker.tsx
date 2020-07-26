@@ -18,7 +18,7 @@ import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
 const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
-    width: 0.61 * width,
+    width: 0.9 * width,
     height: ITEM_HEIGHT * VISIBLE_ITEMS,
     overflow: 'hidden',
   },
@@ -82,13 +82,13 @@ const Picker = ({values, defaultValue}: PickerProps) => {
     <View style={styles.container}>
       <MaskedView {...{maskElement}}>
         <View style={{height: ITEM_HEIGHT * 2, backgroundColor: 'grey'}} />
-        <View style={{height: ITEM_HEIGHT, backgroundColor: 'white'}} />
+        <View style={{height: ITEM_HEIGHT, backgroundColor: 'black'}} />
         <View style={{height: ITEM_HEIGHT * 2, backgroundColor: 'grey'}} />
       </MaskedView>
       <View style={StyleSheet.absoluteFill}>
         <View
           style={{
-            borderColor: 'grey',
+            borderColor: '#023e71',
             borderTopWidth: 1,
             borderBottomWidth: 1,
             top: ITEM_HEIGHT * 2,
