@@ -17,7 +17,7 @@ export default function TestFront({navigation}) {
                 if (link.url.match('https://vote.pls.page.link/.*')) {
                   let parsedLink = parseUrl(link.url);
                   if(parsedLink.room){
-                    navigation.navigate('LinkTest',{roomNumber:parsedLink.room});
+                    navigation.navigate('LinkTest',{roomNumber:parsedLink.room,carryLink:link.url});
                   }else{
                     navigation.navigate('LinkCreate');
                   }
@@ -32,7 +32,7 @@ export default function TestFront({navigation}) {
     <View style={styles.container}>
       <View style={styles.content}>
         <Text>Hi</Text>
-        <Text>Link= {link}</Text>
+        {/* <Text>Link= {link}</Text> */}
 
       </View>
     </View>
