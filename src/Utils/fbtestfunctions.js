@@ -52,11 +52,30 @@ function testDecre(){
 async function buildLink() {
   var instance = await iid().get();
   const link = await dynamicLinks().buildLink({
-    link: 'https://vote.pls.page.link?room='+ instance+"&x=aasdf&y=asdffffff",
-    // domainUriPrefix is created in your Firebase console
-    domainUriPrefix: 'https://votepls.page.link',
-    // optional set up which updates Firebase analytics campaign
-    // "banner". This also needs setting up before hand
+    link: 'https://vote.pls.page.link/?room='+ instance,
+    domainUriPrefix: 'https://votepls.page.link/',
+    android:{
+      packageName:'com.ping'
+    },
+    ios: {
+      bundleId: 'com.ping'
+    }
+  });
+
+  return link;
+}
+
+async function buildLinkShort() {
+  var instance = await iid().get();
+  const link = await dynamicLinks().buildShortLink({
+    link: 'https://vote.pls.page.link/?room='+ instance,
+    domainUriPrefix: 'https://votepls.page.link/',
+    android:{
+      packageName:'com.ping'
+    },
+    ios: {
+      bundleId: 'com.ping'
+    }
   });
 
   return link;
@@ -124,6 +143,8 @@ function parseUrl(url){
     }
 
     */
-
-
-export {testSet, testGet,testIncre,testDecre,buildLink,parseUrl};
+//https://votepls.page.link/?link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a&apn=com.ping
+//https://votepls.page.link/?apn=com.ping&ibi=com.ping&link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a
+//https://votepls.page.link/LLqDPB4qFHFJTeKX9
+//https://votepls.page.link/prUQmP4nH5VgStrj6
+export {testSet, testGet,testIncre,testDecre,buildLink,parseUrl,buildLinkShort};

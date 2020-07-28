@@ -16,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="LinkCreate"
+        initialRouteName="TestFront"
         screenOptions={{
           headerTintColor: 'black',
           headerStyle: {backgroundColor: '#fff'},

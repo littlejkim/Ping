@@ -3,8 +3,7 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {testGet, testSet, testIncre, testDecre} from '../utils/fbtestfunctions';
-
+import {testGet, testSet, testIncre, testDecre,buildLink,parseUrl} from '../utils/fbtestfunctions';
 export default function LinkTest({route, navigation}) {
   const {roomNumber} = route.params;
   // const [query, setQuery] = useState('');
@@ -25,7 +24,7 @@ export default function LinkTest({route, navigation}) {
     <View style={styles.container}>
       <View style={styles.content}>
         {/* <Text>set/get = {query}</Text> */}
-        <Text>roomNumber = {roomNumber}</Text>
+        <Text>roomNumber = {JSON.stringify(roomNumber)}</Text>
       </View>
       <View style={styles.footer}>
         <CustomButton
