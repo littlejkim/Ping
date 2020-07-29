@@ -1,7 +1,8 @@
 import database from '@react-native-firebase/database';
 import iid from '@react-native-firebase/iid';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-var rdn;
+import SHA256 from 'crypto-js/sha256';
+
 async function testSet() {
   var instance = await iid().get();
   var rand = Math.floor(Math.random() * Math.floor(100));
@@ -67,8 +68,9 @@ async function buildLink() {
 
 async function buildLinkShort() {
   var instance = await iid().get();
+  var hash = SHA256(Date.now().toString());
   const link = await dynamicLinks().buildShortLink({
-    link: 'https://vote.pls.page.link/?room='+ instance,
+    link: 'https://vote.pls.page.link/?room='+ instance+"&h="+hash,
     domainUriPrefix: 'https://votepls.page.link/',
     android:{
       packageName:'com.ping'

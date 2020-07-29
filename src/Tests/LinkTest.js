@@ -5,7 +5,7 @@ import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
 import {testGet, testSet, testIncre, testDecre,buildLink,parseUrl,buildLinkShort} from '../utils/fbtestfunctions';
 export default function LinkTest({route, navigation}) {
-  const {roomNumber,carryLink} = route.params;
+  const {roomNumber,carryLink,h} = route.params;
   const [link, setLink] = useState();
   const [showingLink, setShowingLink] = useState();
   // const [query, setQuery] = useState('');
@@ -33,7 +33,8 @@ export default function LinkTest({route, navigation}) {
       <View style={styles.content}>
         {/* <Text>set/get = {query}</Text> */}
         <Text>Welcome!</Text>
-        <Text>roomNumber = {JSON.stringify(roomNumber)}</Text>
+        <Text style={{textAlign:'center'}}>roomOwner = {JSON.stringify(roomNumber)}</Text>
+        <Text style={{textAlign:'center'}}>roomNumber = {JSON.stringify(h)}</Text>
         <Text style={{textAlign:'center'}}>{showingLink}</Text>
       </View>
       <View style={styles.footer}>

@@ -17,7 +17,7 @@ export default function TestFront({navigation}) {
                 if (link.url.match('https://vote.pls.page.link/.*')) {
                   let parsedLink = parseUrl(link.url);
                   if(parsedLink.room){
-                    navigation.navigate('LinkTest',{roomNumber:parsedLink.room,carryLink:link.url});
+                    navigation.navigate('LinkTest',{roomNumber:parsedLink.room,carryLink:link.url,h:parsedLink.h});
                   }else{
                     navigation.navigate('LinkCreate');
                   }
