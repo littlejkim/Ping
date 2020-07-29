@@ -3,18 +3,18 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
-
-const start = 1900;
-const values = new Array(new Date().getFullYear() - start + 1)
-  .fill(0)
-  .map((_, i) => {
-    const value = start + i;
-    return {value, label: `${value}`};
-  })
-  .reverse();
+// import {priceValues} from '../constants/data';
 
 export default function Price({navigation}) {
-  const defaultValue = 1990 - start;
+  const values = [
+    {label: '5000원 이하', value: 0},
+    {label: '5000원 ~ 10,000원', value: 1},
+    {label: '10,000원 ~ 20,000원', value: 2},
+    {label: '20,000원 ~ 30,000원', value: 3},
+    {label: '30,000원 이상', value: 4},
+  ];
+
+  const defaultValue = 0;
 
   return (
     <View style={{flex: 1}}>
