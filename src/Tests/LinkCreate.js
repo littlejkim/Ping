@@ -43,12 +43,12 @@ export default function LinkTest({route, navigation}) {
           title={'Create Room'}
           onPress={() => {
             buildLinkShort().then((res)=>{
-              var obj = parseUrl(decodeURIComponent(res));
+              // var obj = parseUrl(decodeURIComponent(res));
               setLink(decodeURIComponent(res));
-              setParsed(JSON.stringify(obj));
-              setLinkSplit(obj.link.split("?")[0]);
-              var linkobj = parseUrl(decodeURIComponent(obj.link));
-              setRoom(linkobj.room);
+              // setParsed(JSON.stringify(obj));
+              // setLinkSplit(obj.link.split("?")[0]);
+              // var linkobj = parseUrl(decodeURIComponent(obj.link));
+              // setRoom(linkobj.room);
             })
           }}
         />
