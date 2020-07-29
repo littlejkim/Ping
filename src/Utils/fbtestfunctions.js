@@ -149,4 +149,5 @@ function parseUrl(url){
 //https://votepls.page.link/?apn=com.ping&ibi=com.ping&link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a
 //https://votepls.page.link/LLqDPB4qFHFJTeKX9
 //https://votepls.page.link/prUQmP4nH5VgStrj6
+//https://votepls.page.link/bV8SjD8CR1c3dbz29
 export {testSet, testGet,testIncre,testDecre,buildLink,parseUrl,buildLinkShort};
