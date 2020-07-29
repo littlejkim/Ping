@@ -9,6 +9,8 @@ import Menu from './src/screens/Menu';
 import Price from './src/screens/Price';
 import Dbtest from './src/Tests/Dbtest2';
 import LinkTest from './src/Tests/LinkTest';
+import LinkCreate from './src/Tests/LinkCreate';
+import TestFront from './src/Tests/TestFront';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -46,6 +48,16 @@ export default function App() {
         <Stack.Screen
           name="LinkTest"
           component={LinkTest}
+          options={{title: 'test'}}
+        />
+        <Stack.Screen
+          name="LinkCreate"
+          component={LinkCreate}
+          options={{title: 'test'}}
+        />
+        <Stack.Screen
+          name="TestFront"
+          component={TestFront}
           options={{title: 'test'}}
         />
       </Stack.Navigator>

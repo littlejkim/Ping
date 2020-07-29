@@ -1,6 +1,8 @@
 import database from '@react-native-firebase/database';
 import iid from '@react-native-firebase/iid';
-var rdn;
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import SHA256 from 'crypto-js/sha256';
+
 async function testSet() {
   var instance = await iid().get();
   var rand = Math.floor(Math.random() * Math.floor(100));
@@ -48,6 +50,48 @@ function testDecre(){
   });
 }
 
+async function buildLink() {
+  var instance = await iid().get();
+  const link = await dynamicLinks().buildLink({
+    link: 'https://vote.pls.page.link/?room='+ instance,
+    domainUriPrefix: 'https://votepls.page.link/',
+    android:{
+      packageName:'com.ping'
+    },
+    ios: {
+      bundleId: 'com.ping'
+    }
+  });
+
+  return link;
+}
+
+async function buildLinkShort() {
+  var instance = await iid().get();
+  var hash = SHA256(Date.now().toString());
+  const link = await dynamicLinks().buildShortLink({
+    link: 'https://vote.pls.page.link/?room='+ instance+"&h="+hash,
+    domainUriPrefix: 'https://votepls.page.link/',
+    android:{
+      packageName:'com.ping'
+    },
+    ios: {
+      bundleId: 'com.ping'
+    }
+  });
+
+  return link;
+}
+
+function parseUrl(url){
+  let regex = /[?&]([^=#]+)=([^&#]*)/g,
+  params = {},
+  match
+  while ((match = regex.exec(url))) {
+    params[match[1]] = match[2]
+  }
+  return params;
+}
 // When post "567" is liked
 // onPostLike('567').then(transaction => {
 //   console.log('New post like count: ', transaction.snapshot.val());
@@ -101,6 +145,9 @@ function testDecre(){
     }
 
     */
-
-
-export {testSet, testGet,testIncre,testDecre};
+//https://votepls.page.link/?link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a&apn=com.ping
+//https://votepls.page.link/?apn=com.ping&ibi=com.ping&link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a
+//https://votepls.page.link/LLqDPB4qFHFJTeKX9
+//https://votepls.page.link/prUQmP4nH5VgStrj6
+//https://votepls.page.link/bV8SjD8CR1c3dbz29
+export {testSet, testGet,testIncre,testDecre,buildLink,parseUrl,buildLinkShort};
