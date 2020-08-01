@@ -7,6 +7,9 @@ import Welcome from './src/screens/Welcome';
 import Join from './src/screens/Join';
 import Menu from './src/screens/Menu';
 import Price from './src/screens/Price';
+import Distance from './src/screens/Distance';
+import Results from './src/screens/Results';
+
 import Dbtest from './src/Tests/Dbtest2';
 import LinkTest from './src/Tests/LinkTest';
 import LinkCreate from './src/Tests/LinkCreate';
@@ -17,7 +20,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Price"
+        initialRouteName="Welcome"
         screenOptions={{
           headerTintColor: 'black',
           headerStyle: {backgroundColor: '#fff'},
@@ -26,19 +29,29 @@ export default function App() {
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          options={{title: 'Ping'}}
+          options={{title: '투표해'}}
         />
         <Stack.Screen
           name="Create"
           component={Create}
           options={{title: 'Create'}}
         />
-        <Stack.Screen name="Join" component={Join} options={{title: 'Join'}} />
-        <Stack.Screen name="Menu" component={Menu} options={{title: 'Menu'}} />
+        <Stack.Screen name="Join" component={Join} options={{title: '가입'}} />
+        <Stack.Screen name="Menu" component={Menu} options={{title: '메뉴'}} />
         <Stack.Screen
           name="Price"
           component={Price}
-          options={{title: 'Price'}}
+          options={{title: '가격'}}
+        />
+        <Stack.Screen
+          name="Distance"
+          component={Distance}
+          options={{title: '거리'}}
+        />
+        <Stack.Screen
+          name="Results"
+          component={Results}
+          options={{title: '결과'}}
         />
         <Stack.Screen
           name="Dbtest"

@@ -1,15 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-
-import {Text, View, TouchableOpacity, Alert} from 'react-native';
-import CustomButton from '../components/CustomButton';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
-
-import {menuData} from '../constants/data';
-import MenuNavigation from '../navigation/MenuNavigation';
-
-export const MenuContext = React.createContext();
-
-export default function Menu({navigation}) {
+import CustomButton from '../components/CustomButton';
+export default function Results({navigation}) {
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -34,17 +28,10 @@ export default function Menu({navigation}) {
     });
   });
   return (
-    <MenuContext.Provider value={{menuData}}>
-      <View style={styles.menuContainer}>
-        <MenuNavigation />
-        <View style={styles.footer}>
-          <CustomButton
-            buttonColor={'#023e71'}
-            title={'다음'}
-            onPress={() => navigation.navigate('Results')}
-          />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <Text style={{fontSize: 50}}>투표 끝</Text>
       </View>
-    </MenuContext.Provider>
+    </View>
   );
 }

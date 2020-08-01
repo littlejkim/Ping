@@ -12,9 +12,9 @@ export default function MenuNavigation() {
   return (
     <MenuContext.Provider value={{menuData}}>
       <Tab.Navigator>
-        <Tab.Screen name="Menu1" component={MenuFlatList1} />
-        <Tab.Screen name="Menu2" component={MenuFlatList2} />
-        <Tab.Screen name="Menu3" component={MenuFlatList3} />
+        <Tab.Screen name="중식" component={MenuFlatList1} />
+        <Tab.Screen name="일식" component={MenuFlatList2} />
+        <Tab.Screen name="양식" component={MenuFlatList3} />
       </Tab.Navigator>
     </MenuContext.Provider>
   );

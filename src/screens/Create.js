@@ -3,7 +3,6 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 export default function Create({route, navigation}) {
-  const {depthId} = route.params;
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -18,7 +17,7 @@ export default function Create({route, navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text>Depth: {depthId}</Text>
+        <Text>Create</Text>
       </View>
       <View style={styles.footer}>
         <CustomButton
@@ -29,7 +28,7 @@ export default function Create({route, navigation}) {
         <CustomButton
           buttonColor={'gray'}
           title={'다음'}
-          onPress={() => navigation.push('Create', {depthId: depthId + 1})}
+          onPress={() => navigation.push('Create')}
         />
       </View>
     </View>

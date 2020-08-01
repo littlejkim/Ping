@@ -1,11 +1,59 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity, Text, View, FlatList} from 'react-native';
 import styles from '../../constants/menuStyles';
 import {MenuContext} from '../../screens/Menu';
 
-const numColumns = 2;
+export default function ManuFlatList2() {
+  const {menuData} = React.useContext(MenuContext);
+  const [selected, setSelected] = useState({
+    renderedData: menuData.menu2,
+  });
+
+  function selectedItems(index) {
+    let renderData = [...selected.renderedData];
+    for (let data of renderData) {
+      if (data.id == index) {
+        data.selected = data.selected == null ? true : !data.selected;
+        break;
+      }
+    }
+    setSelected({renderedData: renderData});
+    console.log(renderData);
+  }
+
+  return (
+    <FlatList
+      extraData={selected.renderedData}
+      keyExtractor={item => item.id.toString()}
+      data={formatData(menuData.menu2)}
+      style={styles.container}
+      renderItem={({item, index}) => {
+        if (item.empty === true) {
+          return <View style={[styles.item, styles.itemInvisible]} />;
+        }
+        return (
+          <TouchableOpacity
+            style={
+              item.selected === true
+                ? styles.itemSelected
+                : styles.itemNotSelected
+            }
+            onPress={() => selectedItems(index)}>
+            <Text style={styles.itemText}>
+              {item.id}
+              {item.menu}
+            </Text>
+          </TouchableOpacity>
+        );
+      }}
+      numColumns={2}
+    />
+  );
+}
 
 const formatData = data => {
+  const numColumns = 2;
+
   const numberOfFullRows = Math.floor(data.length / numColumns);
 
   let numberOfElementsLastRow = data.length - numberOfFullRows * numColumns;
@@ -19,27 +67,3 @@ const formatData = data => {
 
   return data;
 };
-
-export default function MenuFlatList2() {
-  const {menuData} = React.useContext(MenuContext);
-  return (
-    <FlatList
-      data={formatData(menuData.menu2)}
-      style={styles.container}
-      renderItem={({item, index}) => {
-        if (item.empty === true) {
-          return <View style={[styles.item, styles.itemInvisible]} />;
-        }
-        return (
-          <TouchableOpacity style={styles.item}>
-            <Text style={styles.itemText}>
-              {item.key}
-              {item.img}
-            </Text>
-          </TouchableOpacity>
-        );
-      }}
-      numColumns={2}
-    />
-  );
-}

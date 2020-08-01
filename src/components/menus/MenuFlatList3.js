@@ -1,11 +1,58 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity, Text, View, FlatList} from 'react-native';
 import styles from '../../constants/menuStyles';
 import {MenuContext} from '../../screens/Menu';
 
-const numColumns = 2;
+export default function ManuFlatList3() {
+  const {menuData} = React.useContext(MenuContext);
+  const [selected, setSelected] = useState({
+    renderedData: menuData.menu3,
+  });
+
+  function selectedItems(index) {
+    let renderData = [...selected.renderedData];
+    for (let data of renderData) {
+      if (data.id == index) {
+        data.selected = data.selected == null ? true : !data.selected;
+        break;
+      }
+    }
+    setSelected({renderedData: renderData});
+  }
+
+  return (
+    <FlatList
+      extraData={selected.renderedData}
+      keyExtractor={item => item.id.toString()}
+      data={formatData(menuData.menu3)}
+      style={styles.container}
+      renderItem={({item, index}) => {
+        if (item.empty === true) {
+          return <View style={[styles.item, styles.itemInvisible]} />;
+        }
+        return (
+          <TouchableOpacity
+            style={
+              item.selected === true
+                ? styles.itemSelected
+                : styles.itemNotSelected
+            }
+            onPress={() => selectedItems(index)}>
+            <Text style={styles.itemText}>
+              {item.id}
+              {item.menu}
+            </Text>
+          </TouchableOpacity>
+        );
+      }}
+      numColumns={2}
+    />
+  );
+}
 
 const formatData = data => {
+  const numColumns = 2;
+
   const numberOfFullRows = Math.floor(data.length / numColumns);
 
   let numberOfElementsLastRow = data.length - numberOfFullRows * numColumns;
@@ -19,32 +66,3 @@ const formatData = data => {
 
   return data;
 };
-
-export function selected(index) {
-  console.log(index);
-}
-
-export default function MenuFlatList3() {
-  const {menuData} = React.useContext(MenuContext);
-
-  return (
-    <FlatList
-      data={formatData(menuData.menu3)}
-      style={styles.container}
-      renderItem={({item, index}) => {
-        if (item.empty === true) {
-          return <View style={[styles.item, styles.itemInvisible]} />;
-        }
-        return (
-          <TouchableOpacity style={styles.item} onPress={() => selected(index)}>
-            <Text style={styles.itemText}>
-              {item.key}
-              {item.img}
-            </Text>
-          </TouchableOpacity>
-        );
-      }}
-      numColumns={2}
-    />
-  );
-}

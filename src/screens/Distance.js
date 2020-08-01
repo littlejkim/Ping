@@ -31,11 +31,11 @@ export default function Price({navigation}) {
     });
   });
   const values = [
-    {label: '5000원 이하', value: 0},
-    {label: '5000원 ~ 10,000원', value: 1},
-    {label: '10,000원 ~ 20,000원', value: 2},
-    {label: '20,000원 ~ 30,000원', value: 3},
-    {label: '30,000원 이상', value: 4},
+    {label: '안감', value: 0},
+    {label: '5분 거리', value: 1},
+    {label: '10분 거리', value: 2},
+    {label: '20분 거리', value: 3},
+    {label: '30분+', value: 4},
   ];
 
   const defaultValue = 0;
@@ -49,7 +49,7 @@ export default function Price({navigation}) {
           justifyContent: 'flex-end',
           marginLeft: 20,
         }}>
-        <Text style={{fontSize: 25}}>2. 가격을 선택하세요.</Text>
+        <Text style={{fontSize: 25}}>3. 거리를 선택하세요.</Text>
       </View>
       <View style={styles.pickerContainer}>
         <Picker {...{values, defaultValue}} />
@@ -58,7 +58,7 @@ export default function Price({navigation}) {
         <CustomButton
           buttonColor={'#023e71'}
           title={'다음'}
-          onPress={() => navigation.navigate('Distance')}
+          onPress={() => navigation.navigate('Menu')}
         />
       </View>
     </View>

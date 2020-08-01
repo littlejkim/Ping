@@ -18,6 +18,7 @@ export default function ManuFlatList1() {
       }
     }
     setSelected({renderedData: renderData});
+    console.log(renderData);
   }
 
   return (

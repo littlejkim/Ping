@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: 'white',
+    // fontFamily: 'SFProText-Semibold',
     fontSize: 24,
     lineHeight: ITEM_HEIGHT,
     textAlign: 'center',
@@ -45,7 +46,6 @@ interface PickerProps {
 
 const Picker = ({values, defaultValue}: PickerProps) => {
   const translateY = useValue(0);
-  console.log(translateY.__nodeConfig.value);
   const maskElement = (
     <Animated.View style={{transform: [{translateY}]}}>
       {values.map((v, i) => {
