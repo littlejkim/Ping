@@ -20,7 +20,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="Price"
         screenOptions={{
           headerTintColor: 'black',
           headerStyle: {backgroundColor: '#fff'},
@@ -37,16 +37,20 @@ export default function App() {
           options={{title: 'Create'}}
         />
         <Stack.Screen name="Join" component={Join} options={{title: '가입'}} />
-        <Stack.Screen name="Menu" component={Menu} options={{title: '메뉴'}} />
+        <Stack.Screen
+          name="Menu"
+          component={Menu}
+          options={{title: '메뉴 선택'}}
+        />
         <Stack.Screen
           name="Price"
           component={Price}
-          options={{title: '가격'}}
+          options={{title: '가격 선택'}}
         />
         <Stack.Screen
           name="Distance"
           component={Distance}
-          options={{title: '거리'}}
+          options={{title: '거리 선택'}}
         />
         <Stack.Screen
           name="Results"

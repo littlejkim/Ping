@@ -7,6 +7,14 @@ import Picker from '../components/picker/Picker';
 // import {priceValues} from '../constants/data';
 
 export default function Price({navigation}) {
+  const isFirstRender = React.useRef(true);
+  React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    /*business logic for component did update*/
+  });
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -32,17 +40,19 @@ export default function Price({navigation}) {
   });
   const values = [
     {label: '5000원 이하', value: 0},
-    {label: '5000원 ~ 10,000원', value: 1},
-    {label: '10,000원 ~ 20,000원', value: 2},
-    {label: '20,000원 ~ 30,000원', value: 3},
-    {label: '30,000원 이상', value: 4},
+    {label: '5000원 ~ 1만원', value: 1},
+    {label: '1만원 ~ 2만원', value: 2},
+    {label: '2만원 ~ 3만원', value: 3},
+    {label: '3만원 ~ 4만원', value: 4},
+    {label: '4만원 ~ 5만원', value: 5},
+    {label: '5만원 이상', value: 6},
   ];
 
   const defaultValue = 0;
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-      <View
+      {/* <View
         style={{
           flex: 0.1,
           alignItems: 'flex-start',
@@ -50,7 +60,7 @@ export default function Price({navigation}) {
           marginLeft: 20,
         }}>
         <Text style={{fontSize: 25}}>2. 가격을 선택하세요.</Text>
-      </View>
+      </View> */}
       <View style={styles.pickerContainer}>
         <Picker {...{values, defaultValue}} />
       </View>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import Animated, {
   interpolate,
@@ -57,6 +57,7 @@ const Picker = ({values, defaultValue}: PickerProps) => {
             extrapolate: Extrapolate.CLAMP,
           },
         );
+
         const rotateX = asin(y);
         const z = sub(multiply(RADIUS, cos(rotateX)), RADIUS);
         return (
