@@ -3,13 +3,21 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {testGet, testSet, testIncre, testDecre,buildLink,parseUrl,buildLinkShort} from '../utils/fbtestfunctions';
+import {
+  testGet,
+  testSet,
+  testIncre,
+  testDecre,
+  buildLink,
+  parseUrl,
+  buildLinkShort,
+} from '../utils/fbtestfunctions';
 import iid from '@react-native-firebase/iid';
 export default function LinkTest({route, navigation}) {
   const [link, setLink] = useState('');
-  const [parsed, setParsed] = useState("");
-  const [room, setRoom] = useState("");
-  const [linkSplit, setLinkSplit] = useState("");
+  const [parsed, setParsed] = useState('');
+  const [room, setRoom] = useState('');
+  const [linkSplit, setLinkSplit] = useState('');
   // const [realTime, setRealTime] = useState('');
   // useEffect(() => {
   //   const onValueChange = database()
@@ -42,14 +50,14 @@ export default function LinkTest({route, navigation}) {
           buttonColor={'gray'}
           title={'Create Room'}
           onPress={() => {
-            buildLinkShort().then((res)=>{
+            buildLinkShort().then(res => {
               // var obj = parseUrl(decodeURIComponent(res));
               setLink(decodeURIComponent(res));
               // setParsed(JSON.stringify(obj));
               // setLinkSplit(obj.link.split("?")[0]);
               // var linkobj = parseUrl(decodeURIComponent(obj.link));
               // setRoom(linkobj.room);
-            })
+            });
           }}
         />
       </View>
