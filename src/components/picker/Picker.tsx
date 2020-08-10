@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import Animated, {
   interpolate,
@@ -8,12 +8,15 @@ import Animated, {
   sub,
   asin,
   divide,
+  useCode,
+  call,
 } from 'react-native-reanimated';
 import {useValue, translateZ} from 'react-native-redash';
 import MaskedView from '@react-native-community/masked-view';
 
 import GestureHandler from './GestureHandler';
 import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
+import {parseTransY} from '../../utils/fbtestfunctions';
 
 const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -79,7 +82,13 @@ const Picker = ({values, defaultValue}: PickerProps) => {
       })}
     </Animated.View>
   );
+  useCode(() => {
+    return call([translateY], (translateY) => {
+      console.log(translateY);
+    })
+  }, []);
   return (
+    
     <View style={styles.container}>
       <MaskedView {...{maskElement}}>
         <View style={{height: ITEM_HEIGHT * 2, backgroundColor: 'grey'}} />
@@ -101,6 +110,7 @@ const Picker = ({values, defaultValue}: PickerProps) => {
         max={values.length}
         value={translateY}
         {...{defaultValue}}
+        
       />
     </View>
   );

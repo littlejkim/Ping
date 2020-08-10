@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React,{useState} from 'react';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
@@ -67,7 +67,7 @@ export default function Price({navigation}) {
       <View style={styles.footer}>
         <CustomButton
           buttonColor={'#023e71'}
-          title={'다음'}
+          title={picked}
           onPress={() => navigation.navigate('Distance')}
         />
       </View>
