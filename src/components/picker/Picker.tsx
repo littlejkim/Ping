@@ -86,7 +86,8 @@ const Picker = ({values, defaultValue}: PickerProps) => {
   let y;
   useCode(() => {
       return call([translateY], (translateY) => {
-        let x = parseTransY(parseInt(translateY.toString()));
+        let x = parseTransY(parseInt(translateY.toString()),values.length);
+        // console.log(x);
         if(y !== x){
           y=x;
           console.log(values[y].label);
