@@ -67,7 +67,7 @@ export default function Price({navigation}) {
       <View style={styles.footer}>
         <CustomButton
           buttonColor={'#023e71'}
-          title={picked}
+          title={'다음'}
           onPress={() => navigation.navigate('Distance')}
         />
       </View>

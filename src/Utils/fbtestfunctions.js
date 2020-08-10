@@ -96,14 +96,28 @@ function parseUrl(url){
 
 function parseTransY(transY){
   
-  switch (transY) {
-    case transY[0]==200:
+  switch (true) {
+    case (transY>=151):
       return 0;
       break;
-    case transY[0]==0:
+    case (transY<=150 && transY>=51):
       return 1;
       break;
-  
+    case (transY<=50 && transY>=-49):
+      return 2;
+      break;
+    case (transY<=-50 && transY>=-149):
+      return 3;
+      break;
+    case (transY<=-150 && transY>=-249):
+      return 4;
+      break;
+    case (transY<=-250 && transY>=-349):
+      return 5;
+      break;
+    case (transY <=-350):
+      return 6;
+      break;
     default:
       break;
   }
