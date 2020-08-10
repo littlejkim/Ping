@@ -1,14 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
-import React,{useState} from 'react';
+import React from 'react';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
-// import {priceValues} from '../constants/data';
 
 export default function Price({navigation}) {
-
-
   const isFirstRender = React.useRef(true);
   React.useEffect(() => {
     if (isFirstRender.current) {
@@ -31,6 +28,8 @@ export default function Price({navigation}) {
       ],
       {cancelable: false},
     );
+
+  // exit button
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (

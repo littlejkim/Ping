@@ -7,7 +7,7 @@ import Animated, {
   debug,
   sub,
   add,
-  call
+  call,
 } from 'react-native-reanimated';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 import {usePanGestureHandler, diffClamp} from 'react-native-redash';
@@ -31,11 +31,7 @@ const GestureHandler = ({value, max, defaultValue}: GestureHandlerProps) => {
     snapPoints,
   });
   useCode(() => [set(value, add(translateY, ITEM_HEIGHT * 2))], []);
-  // useCode(() => {
-  //   return call([value], (value) => {
-  //     console.log("Picker.tsx translateY: "+value);
-  //   })
-  // }, [])
+
   return (
     <PanGestureHandler {...gestureHandler}>
       <Animated.View style={StyleSheet.absoluteFill} />
