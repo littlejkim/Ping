@@ -7,6 +7,8 @@ import Picker from '../components/picker/Picker';
 // import {priceValues} from '../constants/data';
 
 export default function Price({navigation}) {
+
+
   const isFirstRender = React.useRef(true);
   React.useEffect(() => {
     if (isFirstRender.current) {

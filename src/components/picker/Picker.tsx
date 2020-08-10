@@ -48,7 +48,6 @@ interface PickerProps {
 }
 
 const Picker = ({values, defaultValue}: PickerProps) => {
-  const [targ, setTarg] = useState();
   const translateY = useValue(0);
   const maskElement = (
     <Animated.View style={{transform: [{translateY}]}}>
@@ -83,13 +82,16 @@ const Picker = ({values, defaultValue}: PickerProps) => {
       })}
     </Animated.View>
   );
+
+  let y;
   useCode(() => {
-    
       return call([translateY], (translateY) => {
         let x = parseTransY(parseInt(translateY.toString()));
-        console.log(x);
+        if(y !== x){
+          y=x;
+          console.log(values[y].label);
+        }
       })
-    
   }, []);
   return (
     
