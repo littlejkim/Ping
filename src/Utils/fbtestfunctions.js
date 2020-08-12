@@ -198,5 +198,5 @@ export {
   buildLink,
   parseUrl,
   buildLinkShort,
-  parseTransY,
+  transYtoIndex,
 };
