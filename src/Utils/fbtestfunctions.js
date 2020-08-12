@@ -94,7 +94,7 @@ function parseUrl(url) {
   return params;
 }
 
-function parseTransY(transY, length) {
+function transYtoIndex(transY, length) {
   let x = transY - 200;
   if (x > 0) {
     return 0;
