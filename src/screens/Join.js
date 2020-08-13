@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {createContext} from 'react';
 import {
   Text,
   View,
@@ -8,12 +8,11 @@ import {
   Alert,
   StyleSheet,
 } from 'react-native';
-import {RNCamera} from 'react-native-camera';
-
-const width = Dimensions.get('window').width / 2 - 20;
-const height = Dimensions.get('window').height / 2 - 20;
+import VoteContext from '../context/VoteContext';
 
 export default function Join({route, navigation}) {
+  const width = Dimensions.get('window').width / 2 - 20;
+
   const exitAlert = () =>
     Alert.alert(
       '경고',

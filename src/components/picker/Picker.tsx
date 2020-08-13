@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import Animated, {
   interpolate,
@@ -85,17 +85,16 @@ const Picker = ({values, defaultValue}: PickerProps) => {
 
   let y;
   useCode(() => {
-      return call([translateY], (translateY) => {
-        let x = parseTransY(parseInt(translateY.toString()),values.length);
-        // console.log(x);
-        if(y !== x){
-          y=x;
-          console.log(values[y].label);
-        }
-      })
+    return call([translateY], translateY => {
+      let x = parseTransY(parseInt(translateY.toString()), values.length);
+      // console.log(x);
+      if (y !== x) {
+        y = x;
+        console.log(values[y].label);
+      }
+    });
   }, []);
   return (
-    
     <View style={styles.container}>
       <MaskedView {...{maskElement}}>
         <View style={{height: ITEM_HEIGHT * 2, backgroundColor: 'grey'}} />
@@ -117,7 +116,6 @@ const Picker = ({values, defaultValue}: PickerProps) => {
         max={values.length}
         value={translateY}
         {...{defaultValue}}
-        
       />
     </View>
   );
