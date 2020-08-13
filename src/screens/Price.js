@@ -4,11 +4,8 @@ import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
-import VoteContext from '../context/VoteContext';
 
 export default function Price({navigation}) {
-  // const {price, setPrice} = useContext(VoteContext);
-  // console.log(price);
   const isFirstRender = React.useRef(true);
   React.useEffect(() => {
     if (isFirstRender.current) {
