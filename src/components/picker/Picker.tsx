@@ -16,7 +16,7 @@ import MaskedView from '@react-native-community/masked-view';
 
 import GestureHandler from './GestureHandler';
 import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
-import {TransYtoIndex} from '../../utils/fbtestfunctions';
+import {transYtoIndex} from '../../utils/fbtestfunctions';
 
 const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -85,25 +85,13 @@ const Picker = ({values, defaultValue}: PickerProps) => {
 
   let y;
   useCode(() => {
-<<<<<<< HEAD
     return call([translateY], translateY => {
-      let x = parseTransY(parseInt(translateY.toString()), values.length);
-      // console.log(x);
+      let x = transYtoIndex(parseInt(translateY.toString()), values.length);
       if (y !== x) {
         y = x;
         console.log(values[y].label);
       }
     });
-=======
-      return call([translateY], (translateY) => {
-        let x = TransYtoIndex(parseInt(translateY.toString()),values.length);
-        // console.log(x);
-        if(y !== x){
-          y=x;
-          console.log(values[y].label);
-        }
-      })
->>>>>>> a11da3339de53d6ab0f600d8e642d693567ec0fd
   }, []);
   return (
     <View style={styles.container}>

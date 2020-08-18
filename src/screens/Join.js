@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {createContext} from 'react';
+import React, {useContext} from 'react';
 import {
   Text,
   View,
@@ -8,7 +8,6 @@ import {
   Alert,
   StyleSheet,
 } from 'react-native';
-import VoteContext from '../context/VoteContext';
 
 export default function Join({route, navigation}) {
   const width = Dimensions.get('window').width / 2 - 20;
