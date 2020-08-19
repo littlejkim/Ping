@@ -4,11 +4,11 @@ import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
-import {StoreContext} from '../context/DataContext';
+import {DataContext} from '../context/DataContext2';
 
 export default function Price({navigation}) {
-  const {distance, setDistance} = useContext(StoreContext);
-  console.log(distance);
+  const state = useContext(DataContext);
+  console.log(state.distance);
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -41,7 +41,11 @@ export default function Price({navigation}) {
   ];
 
   const defaultValue = 0;
-
+  const next = () => {
+    state.setPrice('distance changed'),
+      console.log(state.distance),
+      navigation.navigate('Menu');
+  };
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
@@ -57,11 +61,7 @@ export default function Price({navigation}) {
         <Picker {...{values, defaultValue}} />
       </View>
       <View style={styles.footer}>
-        <CustomButton
-          buttonColor={'#023e71'}
-          title={'다음'}
-          onPress={() => navigation.navigate('Menu')}
-        />
+        <CustomButton buttonColor={'#023e71'} title={'다음'} onPress={next} />
       </View>
     </View>
   );

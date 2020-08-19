@@ -15,13 +15,14 @@ import LinkTest from './src/Tests/LinkTest';
 import LinkCreate from './src/Tests/LinkCreate';
 import TestFront from './src/Tests/TestFront';
 
-import {StoreProvider} from './src/context/DataContext';
+// import {StoreProvider} from './src/context/DataContext';
+import {DataContextProvider} from './src/context/DataContext2';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <StoreProvider>
+    <DataContextProvider>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Welcome"
@@ -87,6 +88,6 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </StoreProvider>
+    </DataContextProvider>
   );
 }

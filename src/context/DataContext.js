@@ -5,9 +5,8 @@ const StoreContext = React.createContext(null);
 const StoreProvider = ({children}) => {
   const [key, setKey] = useState('key');
   const [device, setDevice] = useState('hi');
-
-  const [price, setPrice] = useState('price');
-  const [distance, setDistance] = useState('distance');
+  const [price, setPrice] = useState('');
+  const [distance, setDistance] = useState('');
   const [selected, setSelected] = useState([]);
   const store = {
     key,

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import Animated, {
   interpolate,
@@ -19,6 +19,7 @@ import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
 import {transYtoIndex} from '../../utils/fbtestfunctions';
 
 const {width} = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
     width: 0.9 * width,
