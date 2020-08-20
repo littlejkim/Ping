@@ -17,6 +17,8 @@ import MaskedView from '@react-native-community/masked-view';
 import GestureHandler from './GestureHandler';
 import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
 import {transYtoIndex} from '../../utils/fbtestfunctions';
+import {DataContext} from '../../context/DataContext2';
+// import {StoreContext} from '../../context/DataContext';
 
 const {width} = Dimensions.get('window');
 
@@ -32,7 +34,6 @@ const styles = StyleSheet.create({
   },
   label: {
     color: 'white',
-    // fontFamily: 'SFProText-Semibold',
     fontSize: 24,
     lineHeight: ITEM_HEIGHT,
     textAlign: 'center',
@@ -49,6 +50,11 @@ interface PickerProps {
 }
 
 const Picker = ({values, defaultValue}: PickerProps) => {
+  const state = useContext(DataContext);
+  console.log('from picker' + state.price);
+  // const {price, setPrice} = useContext(StoreContext);
+  // setPrice('changed');
+  // console.log('price from picker: ' + price);
   const translateY = useValue(0);
   const maskElement = (
     <Animated.View style={{transform: [{translateY}]}}>
@@ -84,13 +90,18 @@ const Picker = ({values, defaultValue}: PickerProps) => {
     </Animated.View>
   );
 
-  let y;
+  let value;
   useCode(() => {
     return call([translateY], translateY => {
-      let x = transYtoIndex(parseInt(translateY.toString()), values.length);
-      if (y !== x) {
-        y = x;
-        console.log(values[y].label);
+      let changed = transYtoIndex(
+        parseInt(translateY.toString()),
+        values.length,
+      );
+      if (value !== changed) {
+        value = changed;
+        // console.log(values[y].label);
+        // console.log(value);
+        state.setPrice(value);
       }
     });
   }, []);

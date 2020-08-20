@@ -3,10 +3,10 @@ import React, {useState} from 'react';
 const StoreContext = React.createContext(null);
 
 const StoreProvider = ({children}) => {
-  const [key, setKey] = useState('key');
-  const [device, setDevice] = useState('hi');
-  const [price, setPrice] = useState('');
-  const [distance, setDistance] = useState('');
+  const [key, setKey] = useState(0);
+  const [device, setDevice] = useState(0);
+  const [price, setPrice] = useState('hi');
+  const [distance, setDistance] = useState(0);
   const [selected, setSelected] = useState([]);
   const store = {
     key,

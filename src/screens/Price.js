@@ -5,11 +5,11 @@ import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
 // import {StoreContext} from '../context/DataContext';
-import {DataContext} from '../context/DataContext2';
+import {StoreContext} from '../context/DataContext';
 
 export default function Price({navigation}) {
-  const state = useContext(DataContext);
-  console.log(state.price);
+  // const {price} = useContext(StoreContext);
+  // console.log(price);
   const isFirstRender = React.useRef(true);
   React.useEffect(() => {
     if (isFirstRender.current) {
@@ -55,10 +55,11 @@ export default function Price({navigation}) {
 
   const defaultValue = 0;
   const next = () => {
-    state.setPrice('price changed'),
-      console.log(state.price),
-      navigation.navigate('Distance');
+    // state.setPrice('price changed'),
+    // console.log('next pressed' + state.price);
+    navigation.navigate('Distance');
   };
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View

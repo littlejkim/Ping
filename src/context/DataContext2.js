@@ -15,16 +15,16 @@ export const DataContext = React.createContext({
 
 export const DataContextProvider = props => {
   const setKey = key => {
-    if (this.key !== key) {
-      setState({...state, key: key});
-    }
+    setState({...state, key: key});
   };
 
   const setDevice = device => {
     setState({...state, device: device});
   };
-  const setPrice = price => {
-    setState({...state, price: price});
+  const setPrice = data => {
+    if (this.price !== data) {
+      setState({price: data});
+    }
   };
   const setDistance = distance => {
     setState({...state, distance: distance});
