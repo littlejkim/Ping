@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext,useState} from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import Animated, {
   interpolate,
@@ -18,7 +18,6 @@ import GestureHandler from './GestureHandler';
 import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
 import {transYtoIndex} from '../../utils/fbtestfunctions';
 import {DataContext} from '../../context/DataContext2';
-// import {StoreContext} from '../../context/DataContext';
 
 const {width} = Dimensions.get('window');
 
@@ -47,14 +46,11 @@ const RADIUS = RADIUS_REL * ITEM_HEIGHT;
 interface PickerProps {
   defaultValue: number;
   values: {value: number; label: string}[];
+  extractFromPicker: Function;
 }
 
-const Picker = ({values, defaultValue}: PickerProps) => {
-  const state = useContext(DataContext);
-  console.log('from picker' + state.price);
-  // const {price, setPrice} = useContext(StoreContext);
-  // setPrice('changed');
-  // console.log('price from picker: ' + price);
+
+const Picker = ({values, defaultValue, extractFromPicker}: PickerProps) => {
   const translateY = useValue(0);
   const maskElement = (
     <Animated.View style={{transform: [{translateY}]}}>
@@ -67,7 +63,6 @@ const Picker = ({values, defaultValue}: PickerProps) => {
             extrapolate: Extrapolate.CLAMP,
           },
         );
-
         const rotateX = asin(y);
         const z = sub(multiply(RADIUS, cos(rotateX)), RADIUS);
         return (
@@ -91,20 +86,16 @@ const Picker = ({values, defaultValue}: PickerProps) => {
   );
 
   let value;
-  useCode(() => {
-    return call([translateY], translateY => {
-      let changed = transYtoIndex(
-        parseInt(translateY.toString()),
-        values.length,
-      );
-      if (value !== changed) {
-        value = changed;
-        // console.log(values[y].label);
-        // console.log(value);
-        state.setPrice(value);
-      }
-    });
-  }, []);
+      useCode(() => {
+          return call([translateY], translateY => {
+            let changed = transYtoIndex(parseInt(translateY.toString()), values.length);
+            if (value !== changed) {
+              value = changed;
+              extractFromPicker(values[value].label);
+            }
+          });
+      }, []);
+    
   return (
     <View style={styles.container}>
       <MaskedView {...{maskElement}}>

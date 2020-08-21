@@ -1,15 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
 // import {StoreContext} from '../context/DataContext';
-import {StoreContext} from '../context/DataContext';
+import {DataContext} from '../context/DataContext2';
 
 export default function Price({navigation}) {
-  // const {price} = useContext(StoreContext);
-  // console.log(price);
+  const state = useContext(DataContext);
+  // console.log(state.price);
   const isFirstRender = React.useRef(true);
   React.useEffect(() => {
     if (isFirstRender.current) {
@@ -54,12 +54,15 @@ export default function Price({navigation}) {
   ];
 
   const defaultValue = 0;
+
   const next = () => {
-    // state.setPrice('price changed'),
-    // console.log('next pressed' + state.price);
+    state.setPrice(value);
     navigation.navigate('Distance');
   };
-
+  const extractFromPicker = (evt) => {
+    console.log("evt:"+evt)
+    value = evt;
+  }
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
@@ -72,7 +75,7 @@ export default function Price({navigation}) {
         <Text style={{fontSize: 25}}>2. 가격을 선택하세요.</Text>
       </View>
       <View style={styles.pickerContainer}>
-        <Picker {...{values, defaultValue}} />
+        <Picker {...{values, defaultValue, extractFromPicker}} />
       </View>
       <View style={styles.footer}>
         <CustomButton buttonColor={'#023e71'} title={'다음'} onPress={next} />
