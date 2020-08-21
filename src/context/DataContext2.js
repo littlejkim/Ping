@@ -23,7 +23,7 @@ export const DataContextProvider = props => {
   };
   const setPrice = data => {
     if (this.price !== data) {
-      setState({price: data});
+      setState({...state,price: data});
     }
   };
   const setDistance = distance => {
