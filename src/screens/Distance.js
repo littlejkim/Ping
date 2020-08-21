@@ -8,7 +8,10 @@ import {DataContext} from '../context/DataContext2';
 
 export default function Price({navigation}) {
   const state = useContext(DataContext);
-  console.log(state.distance);
+  React.useEffect(() => {
+    console.log("after setPrice: "+JSON.stringify(state)) //just logging
+  });
+  // console.log(state.distance);
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -42,10 +45,14 @@ export default function Price({navigation}) {
 
   const defaultValue = 0;
   const next = () => {
-    state.setPrice('distance changed'),
-      console.log(state.distance),
-      navigation.navigate('Menu');
+    state.setDistance(value2);
+    navigation.navigate('Menu');
   };
+
+  const extractFromPicker = (evt) => {
+    console.log("evt:"+evt)
+    value2 = evt;
+  }
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
@@ -58,7 +65,7 @@ export default function Price({navigation}) {
         <Text style={{fontSize: 25}}>3. 거리를 선택하세요.</Text>
       </View>
       <View style={styles.pickerContainer}>
-        <Picker {...{values, defaultValue}} />
+        <Picker {...{values, defaultValue, extractFromPicker}} />
       </View>
       <View style={styles.footer}>
         <CustomButton buttonColor={'#023e71'} title={'다음'} onPress={next} />

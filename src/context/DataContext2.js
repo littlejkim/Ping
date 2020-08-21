@@ -22,12 +22,15 @@ export const DataContextProvider = props => {
     setState({...state, device: device});
   };
   const setPrice = data => {
+  //  console.log("this.price: "+this.price);  //this.price is always fucking undefined. why is the if statement there
     if (this.price !== data) {
-      setState({price: data});
+      setState({...state,price: data});
     }
   };
   const setDistance = distance => {
+    //console.log(JSON.stringify(state));    //state here is initState idk why
     setState({...state, distance: distance});
+
   };
 
   const initState = {
