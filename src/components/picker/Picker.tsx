@@ -1,4 +1,4 @@
-import React, {useContext,useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, StyleSheet, Text, Dimensions} from 'react-native';
 import Animated, {
   interpolate,
@@ -49,7 +49,6 @@ interface PickerProps {
   extractFromPicker: Function;
 }
 
-
 const Picker = ({values, defaultValue, extractFromPicker}: PickerProps) => {
   const translateY = useValue(0);
   const maskElement = (
@@ -86,16 +85,19 @@ const Picker = ({values, defaultValue, extractFromPicker}: PickerProps) => {
   );
 
   let value;
-      useCode(() => {
-          return call([translateY], translateY => {
-            let changed = transYtoIndex(parseInt(translateY.toString()), values.length);
-            if (value !== changed) {
-              value = changed;
-              extractFromPicker(values[value].label);
-            }
-          });
-      }, []);
-    
+  useCode(() => {
+    return call([translateY], translateY => {
+      let changed = transYtoIndex(
+        parseInt(translateY.toString()),
+        values.length,
+      );
+      if (value !== changed) {
+        value = changed;
+        extractFromPicker(values[value].label);
+      }
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <MaskedView {...{maskElement}}>

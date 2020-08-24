@@ -4,14 +4,10 @@ import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
-import {DataContext} from '../context/DataContext2';
+import {StoreContext} from '../context/DataContext';
 
 export default function Price({navigation}) {
-  const state = useContext(DataContext);
-  React.useEffect(() => {
-    console.log("after setPrice: "+JSON.stringify(state)) //just logging
-  });
-  // console.log(state.distance);
+  const state = useContext(StoreContext);
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -44,15 +40,15 @@ export default function Price({navigation}) {
   ];
 
   const defaultValue = 0;
+  let value;
   const next = () => {
-    state.setDistance(value2);
+    state.setDistance(value);
     navigation.navigate('Menu');
   };
 
-  const extractFromPicker = (evt) => {
-    console.log("evt:"+evt)
-    value2 = evt;
-  }
+  const extractFromPicker = evt => {
+    value = evt;
+  };
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View

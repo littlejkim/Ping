@@ -1,9 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
-import CustomButton from '../components/CustomButton';
+import {StoreContext} from '../context/DataContext';
+
 export default function Results({navigation}) {
+  const state = useContext(StoreContext);
+  console.log(JSON.stringify(state));
   const exitAlert = () =>
     Alert.alert(
       '경고',

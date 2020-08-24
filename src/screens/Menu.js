@@ -1,4 +1,4 @@
-import React,{useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
 import {Text, View, TouchableOpacity, Alert} from 'react-native';
 import CustomButton from '../components/CustomButton';
@@ -6,15 +6,13 @@ import styles from '../constants/styles';
 
 import {menuData} from '../constants/data';
 import MenuNavigation from '../navigation/MenuNavigation';
-import {DataContext} from '../context/DataContext2';
+import {StoreContext} from '../context/DataContext';
 
 export const MenuContext = React.createContext();
 
 export default function Menu({navigation}) {
-  const state = useContext(DataContext);
-  React.useEffect(() => {
-    console.log("after setDistance: "+JSON.stringify(state)) //just logging
-  });
+  const state = useContext(StoreContext);
+  state.setSelected('TODO');
   const exitAlert = () =>
     Alert.alert(
       '경고',

@@ -4,12 +4,10 @@ import {View, Text, TouchableOpacity, Alert} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
-// import {StoreContext} from '../context/DataContext';
-import {DataContext} from '../context/DataContext2';
+import {StoreContext} from '../context/DataContext';
 
 export default function Price({navigation}) {
-  const state = useContext(DataContext);
-  // console.log(state.price);
+  const state = useContext(StoreContext);
   const isFirstRender = React.useRef(true);
   React.useEffect(() => {
     if (isFirstRender.current) {
@@ -55,14 +53,15 @@ export default function Price({navigation}) {
 
   const defaultValue = 0;
 
+  let value;
   const next = () => {
     state.setPrice(value);
     navigation.navigate('Distance');
   };
-  const extractFromPicker = (evt) => {
-    console.log("evt:"+evt)
+  const extractFromPicker = evt => {
     value = evt;
-  }
+  };
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
