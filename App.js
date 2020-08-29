@@ -34,12 +34,12 @@ export default function App() {
           <Stack.Screen
             name="Welcome"
             component={Welcome}
-            options={{title: '투표해'}}
+            options={{title: '홈'}}
           />
           <Stack.Screen
             name="Create"
             component={Create}
-            options={{title: 'Create'}}
+            options={{title: '방 생성'}}
           />
           <Stack.Screen
             name="Join"
