@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
 import styles from '../constants/styles';
-import CustomButton from '../components/CustomButton';
+
 export default function Welcome({navigation}) {
   return (
     <View style={footer.container}>
