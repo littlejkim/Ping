@@ -27,7 +27,6 @@ export default function TestFront({navigation}) {
               navigation.navigate('LinkTest', { 
                 roomTitle: urlJson.roomTitle, 
                 memberCount: urlJson.memberCount,
-                carryLink: link.url, 
               });
             } else { //if link has no 'roomTitle' parameter, navigate to create room screen
               navigation.navigate('LinkCreate');
