@@ -50,7 +50,7 @@ export default function LinkTest({route, navigation}) {
           buttonColor={'gray'}
           title={'Create Room'}
           onPress={() => {
-            buildLinkShort(0,1).then(res => { //'res' is the returned link
+            buildLinkShort("Room Title",1).then(res => { //'res' is the returned dynamic link
               /*do something
                 ...
                 ...
