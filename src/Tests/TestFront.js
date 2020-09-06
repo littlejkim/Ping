@@ -18,7 +18,7 @@ export default function TestFront({navigation}) {
   useEffect(() => {
     dynamicLinks()
       .getInitialLink()
-      .then(link => { //'link' object includes url(the 'link' parameter), appname, etc.
+      .then(link => { //this 'link' object includes url(the 'link' parameter from buildShortLink()), appname, etc.
         console.log(JSON.stringify(link));
         if (link) { //if user opened the app by dynamic link
           if (link.url.match('https://vote.pls.page.link/.*')) {
