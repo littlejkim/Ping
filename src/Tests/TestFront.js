@@ -11,28 +11,30 @@ import {
   buildLink,
   parseUrl,
 } from '../utils/fbtestfunctions';
+import { urlJson } from '../Utils/linkfunctions';
 
 export default function TestFront({navigation}) {
-  const [link, setLink] = useState();
   useEffect(() => {
     dynamicLinks()
       .getInitialLink()
-      .then(link => {
-        setLink(JSON.stringify(link));
-        if (link) {
+      .then(link => { //'link' object includes url(the 'link' parameter), appname, etc.
+        console.log(JSON.stringify(link));
+        if (link) { //if user opened the app by dynamic link
           if (link.url.match('https://vote.pls.page.link/.*')) {
-            let parsedLink = parseUrl(link.url);
-            if (parsedLink.room) {
-              navigation.navigate('LinkTest', {
-                roomNumber: parsedLink.room,
-                carryLink: link.url,
-                h: parsedLink.h,
+            let urlJson = urlJson(link.url); //Jsonify parameters of the link
+            if (urlJson.room) { //if link has 'room' parameter, navigate to next screen with the parameters
+              navigation.navigate('LinkTest', { 
+                roomNumber: urlJson.room, 
+                carryLink: link.url, 
+                h: urlJson.h,
               });
-            } else {
+            } else { //if link has no 'room' parameter, navigate to create room screen
               navigation.navigate('LinkCreate');
             }
+          } else{ //if link does not match, navigate to create room screen
+              navigation.navigate('LinkCreate');
           }
-        } else {
+        } else { //if the user didn't open the app by dynamic link, navigate to create room screen
           navigation.navigate('LinkCreate');
         }
       });

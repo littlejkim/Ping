@@ -5,6 +5,7 @@ import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
 import {testGet, testSet, testIncre, testDecre} from '../utils/fbtestfunctions';
 
+//RealTime listen
 export default function Dbtest({navigation}) {
   // const [query, setQuery] = useState('');
   const [realTime, setRealTime] = useState('');
