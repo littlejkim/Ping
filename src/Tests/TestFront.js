@@ -13,6 +13,7 @@ import {
 } from '../utils/fbtestfunctions';
 import { urlJson } from '../Utils/linkfunctions';
 
+//Dynamic link receiving example
 export default function TestFront({navigation}) {
   useEffect(() => {
     dynamicLinks()
