@@ -23,13 +23,13 @@ export default function TestFront({navigation}) {
         if (link) { //if user opened the app by dynamic link
           if (link.url.match('https://vote.pls.page.link/.*')) {
             let urlJson = urlJson(link.url); //Jsonify parameters of the link
-            if (urlJson.room) { //if link has 'room' parameter, navigate to next screen with the parameters
+            if (urlJson.roomTitle) { //if link has 'roomTitle' parameter, navigate to next screen with the parameters
               navigation.navigate('LinkTest', { 
-                roomNumber: urlJson.room, 
+                roomTitle: urlJson.roomTitle, 
+                memberCount: urlJson.memberCount,
                 carryLink: link.url, 
-                h: urlJson.h,
               });
-            } else { //if link has no 'room' parameter, navigate to create room screen
+            } else { //if link has no 'roomTitle' parameter, navigate to create room screen
               navigation.navigate('LinkCreate');
             }
           } else{ //if link does not match, navigate to create room screen

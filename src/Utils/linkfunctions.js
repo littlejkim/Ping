@@ -5,11 +5,9 @@ import SHA256 from 'crypto-js/sha256';
 import {useValue} from 'react-native-redash';
 
 //build link
-async function buildLinkShort() {
-    var instance = await iid().get(); //example parameter. instance id
-    var hash = SHA256(Date.now().toString()); //example parameter. random hash
+async function buildLinkShort(roomTitle, memberCount) {
     const link = await dynamicLinks().buildShortLink({ //create link with hashed parameters
-      link: 'https://vote.pls.page.link/?room=' + instance + '&h=' + hash,  //link parameter. add parameters here
+      link: 'https://vote.pls.page.link/?roomTitle=' + roomTitle + '&memberCount=' + memberCount,  //link parameter. add parameters here
       domainUriPrefix: 'https://votepls.page.link/', //the whole 'link' string will be added as a parameter to this url.
       android: {
         packageName: 'com.ping',
