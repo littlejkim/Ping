@@ -36,10 +36,10 @@ function urlJson(url) {
   }
 
 
-//build long link
+//build long link. we only need buildShortLink, but just in case.
 async function buildLink() {
   var instance = await iid().get();
-  const link = await dynamicLinks().buildLink({ //builds raw link. For example: 
+  const link = await dynamicLinks().buildLink({ //builds raw link. For example: https://votepls.page.link/?apn=com.ping&ibi=com.ping&link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a
     link: 'https://vote.pls.page.link/?room=' + instance,
     domainUriPrefix: 'https://votepls.page.link/',
     android: {
