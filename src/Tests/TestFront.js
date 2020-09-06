@@ -32,7 +32,7 @@ export default function TestFront({navigation}) {
               navigation.navigate('LinkCreate');
             }
           } else{ //if link does not match, navigate to create room screen
-              navigation.navigate('LinkCreate');
+            navigation.navigate('LinkCreate');
           }
         } else { //if the user didn't open the app by dynamic link, navigate to create room screen
           navigation.navigate('LinkCreate');
