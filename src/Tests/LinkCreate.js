@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {getNextRoomId,roomCreate} from '../utils/dbfunctions'
+import {getNextRoomId, roomCreate} from '../utils/dbfunctions';
 import {buildLinkShort} from '../utils/linkfunctions';
 import iid from '@react-native-firebase/iid';
 export default function LinkTest({route, navigation}) {
@@ -43,17 +43,26 @@ export default function LinkTest({route, navigation}) {
           buttonColor={'gray'}
           title={'Create Room'}
           onPress={() => {
-              buildLinkShort("Room Title",1).then(res => { //'res' is the returned dynamic link
+            buildLinkShort('Room Title', 1)
+              .then(res => {
+                //'res' is the returned dynamic link
                 /*do something
                   ...
                   ...
                   ...
                 */
-               console.log("link: "+res)
+                console.log('link: ' + res);
                 // setLink(decodeURIComponent(res));
+              })
+              .catch(function(error) {
+                console.log(
+                  'There has been a problem with your fetch operation: ' +
+                    error.message,
+                );
+                // ADD THIS THROW error
+                throw error;
               });
-            }
-          }
+          }}
         />
       </View>
     </View>

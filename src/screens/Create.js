@@ -11,7 +11,7 @@ import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import {TextInput, HelperText, Checkbox} from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
-
+import {buildLinkShort} from '../utils/linkfunctions';
 // import {Picker} from '@react-native-community/picker';
 export default function Create({route, navigation}) {
   const [title, setTitle] = React.useState('');
@@ -45,6 +45,21 @@ export default function Create({route, navigation}) {
   const titleHasErrors = () => {
     return title.includes('@');
   };
+
+  const createRoom = () => {
+    buildLinkShort(title, 0)
+      .then(res => {
+        console.log('link: ' + res);
+      })
+      .catch(function(error) {
+        console.log(
+          'There has been a problem with your fetch operation: ' +
+            error.message,
+        );
+        // ADD THIS THROW error
+        throw error;
+      });
+  };
   return (
     <View style={{flex: 1}}>
       <View style={container.container}>
@@ -71,9 +86,9 @@ export default function Create({route, navigation}) {
             mode="flat"
           />
         </View>
-        <View style={container.divider}>
-          <Text style={container.text}>3. 이동 수단</Text>
-          {/* <Picker
+        {/* <View style={container.divider}>
+          <Text style={container.text}>3. 이동 수단</Text> */}
+        {/* <Picker
               selectedValue={title}
               style={{height: 50, width: 100}}
               onValueChange={(itemValue, itemIndex) => setTitle(itemValue)}>
@@ -82,7 +97,7 @@ export default function Create({route, navigation}) {
               <Picker.Item label="버스" value="bus" />
               <Picker.Item label="지하철" value="subway" />
             </Picker> */}
-          <View style={{paddingLeft: 10, paddingTop: 10}}>
+        {/* <View style={{paddingLeft: 10, paddingTop: 10}}>
             <RNPickerSelect
               placeholder={{
                 label: '인원을 선택하세요',
@@ -96,7 +111,7 @@ export default function Create({route, navigation}) {
               ]}
             />
           </View>
-        </View>
+        </View> */}
         {/* <View style={container.divider}>
           <Text style={container.text}>4. 이동 수단</Text>
           <Checkbox
@@ -111,8 +126,8 @@ export default function Create({route, navigation}) {
       <View style={styles.footer}>
         <CustomButton
           buttonColor={'#023e71'}
-          title={'다음'}
-          onPress={() => console.log(people)}
+          title={'생성'}
+          onPress={() => createRoom()}
         />
       </View>
     </View>
