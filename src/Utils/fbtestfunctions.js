@@ -1,8 +1,5 @@
 import database from '@react-native-firebase/database';
 import iid from '@react-native-firebase/iid';
-import dynamicLinks from '@react-native-firebase/dynamic-links';
-import SHA256 from 'crypto-js/sha256';
-import {useValue} from 'react-native-redash';
 
 async function testSet() {
   var instance = await iid().get();
@@ -21,7 +18,7 @@ async function testSet() {
         qwepoiru: 'qwoeipur',
       },
     });
-  rdn = rand;
+  const rdn = rand;
 }
 
 function testGet() {
@@ -52,8 +49,6 @@ function testDecre() {
 }
 
 //See ../Tests/Dbtest2.js for Realtime listening
-
-
 
 // When post "567" is liked
 // onPostLike('567').then(transaction => {
@@ -113,9 +108,4 @@ function testDecre() {
 //https://votepls.page.link/LLqDPB4qFHFJTeKX9
 //https://votepls.page.link/prUQmP4nH5VgStrj6
 //https://votepls.page.link/bV8SjD8CR1c3dbz29
-export {
-  testSet,
-  testGet,
-  testIncre,
-  testDecre,
-};
+export {testSet, testGet, testIncre, testDecre};
