@@ -3,15 +3,8 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import database from '@react-native-firebase/database';
-import {
-  testGet,
-  testSet,
-  testIncre,
-  testDecre,
-  buildLink,
-  parseUrl,
-  buildLinkShort,
-} from '../utils/fbtestfunctions';
+import {getNextRoomId,roomCreate} from '../utils/dbfunctions'
+import {buildLinkShort} from '../utils/linkfunctions';
 import iid from '@react-native-firebase/iid';
 export default function LinkTest({route, navigation}) {
   const [link, setLink] = useState('');
@@ -50,16 +43,17 @@ export default function LinkTest({route, navigation}) {
           buttonColor={'gray'}
           title={'Create Room'}
           onPress={() => {
-            buildLinkShort("Room Title",1).then(res => { //'res' is the returned dynamic link
-              /*do something
-                ...
-                ...
-                ...
-              */
-             console.log(res)
-              // setLink(decodeURIComponent(res));
-            });
-          }}
+              buildLinkShort("Room Title",1).then(res => { //'res' is the returned dynamic link
+                /*do something
+                  ...
+                  ...
+                  ...
+                */
+               console.log("link: "+res)
+                // setLink(decodeURIComponent(res));
+              });
+            }
+          }
         />
       </View>
     </View>

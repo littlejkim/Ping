@@ -11,7 +11,7 @@ import {
   buildLink,
   parseUrl,
 } from '../utils/fbtestfunctions';
-import { urlJson } from '../Utils/linkfunctions';
+import { urlJson } from '../utils/linkfunctions';
 
 //Dynamic link receiving example
 export default function TestFront({navigation}) {

@@ -25,7 +25,7 @@ export default function App() {
     <StoreProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Welcome"
+          initialRouteName="LinkCreate"
           screenOptions={{
             headerTintColor: 'black',
             headerStyle: {backgroundColor: '#fff'},
