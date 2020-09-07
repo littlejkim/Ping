@@ -8,16 +8,10 @@ import {roomCreate,getNextRoomId} from './dbfunctions';
 
 //build link
 async function buildLinkShort(roomTitle, memberCount) {
-    // var roomId;
-    // getNextRoomId().then(transaction => {
-    //   roomId=transaction.snapshot.val()
-    // });
-    // roomCreate(roomId,roomTitle,memberCount); //push room settings to fb database
-
     var roomId;
-    getNextRoomId().then(transaction => {
+    getNextRoomId().then(transaction => { //get roomCount from firebase db and increment
       console.log("transaction: "+JSON.stringify(transaction))
-      if(transaction.committed){
+      if(transaction.committed){ //if successfully get and increment,
         roomId=transaction.snapshot.val();
         roomCreate(roomId,roomTitle,memberCount); //push room settings to fb database
       }

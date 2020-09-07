@@ -28,6 +28,8 @@ function roomCreate(roomId,roomTitle,memberCount) {
           'asdlf;kj': 'asdlk;fj',
           qwepoiru: 'qwoeipur',
         },
+      }, () => {
+        return console.log("roomCreate complete: " + true);
       });
   }
 
