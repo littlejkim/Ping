@@ -7,7 +7,7 @@ import {roomCreate, getNextRoomId} from './dbfunctions';
 //build link
 async function buildLinkShort(roomTitle, memberCount) {
   var roomId;
-  getNextRoomId().then(transaction => {
+    await getNextRoomId().then(transaction => {
     //get roomCount from firebase db and increment
     console.log('transaction: ' + JSON.stringify(transaction));
     if (transaction.committed) {
@@ -17,6 +17,7 @@ async function buildLinkShort(roomTitle, memberCount) {
     }
   });
 
+  console.log("roomId: "+roomId);
   //create link with hashed parameters
   const link = await dynamicLinks().buildShortLink({
     link:
@@ -26,7 +27,7 @@ async function buildLinkShort(roomTitle, memberCount) {
       roomTitle +
       '&memberCount=' +
       memberCount, //link parameter. add parameters here
-    domainUriPrefix: 'https://votepls.page.link/', //the whole 'link' string will be added as a parameter to this url.
+    domainUriPrefix: 'https://voteping.page.link/', //the whole 'link' string will be added as a parameter to this url.
     android: {
       packageName: 'com.ping',
     },
