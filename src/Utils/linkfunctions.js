@@ -22,7 +22,7 @@ async function buildLinkShort(roomTitle, memberCount) {
     link:
       'https://vote.pls.page.link/?roomId=' +
       roomId +
-      'roomTitle=' +
+      '&roomTitle=' +
       roomTitle +
       '&memberCount=' +
       memberCount, //link parameter. add parameters here
@@ -50,20 +50,20 @@ function urlJson(url) {
 }
 
 //build long link. we only need buildShortLink, but just in case.
-async function buildLink() {
-  var instance = await iid().get();
-  const link = await dynamicLinks().buildLink({
-    //builds raw link. For example: https://votepls.page.link/?apn=com.ping&ibi=com.ping&link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a
-    link: 'https://vote.pls.page.link/?room=' + instance,
-    domainUriPrefix: 'https://votepls.page.link/',
-    android: {
-      packageName: 'com.ping',
-    },
-    ios: {
-      bundleId: 'com.ping',
-    },
-  });
+// async function buildLink() {
+//   var instance = await iid().get();
+//   const link = await dynamicLinks().buildLink({
+//     //builds raw link. For example: https://votepls.page.link/?apn=com.ping&ibi=com.ping&link=https://votepls.page.link/?room=eZyTWcHnRA2XE00JzFpm8a
+//     link: 'https://vote.pls.page.link/?room=' + instance,
+//     domainUriPrefix: 'https://votepls.page.link/',
+//     android: {
+//       packageName: 'com.ping',
+//     },
+//     ios: {
+//       bundleId: 'com.ping',
+//     },
+//   });
 
-  return link;
-}
+//   return link;
+// }
 export {buildLinkShort, urlJson};
