@@ -16,8 +16,7 @@ import MaskedView from '@react-native-community/masked-view';
 
 import GestureHandler from './GestureHandler';
 import {VISIBLE_ITEMS, ITEM_HEIGHT} from './Constants';
-import {transYtoIndex} from '../../utils/fbtestfunctions';
-import {DataContext} from '../../context/DataContext2';
+import {transYtoIndex} from '../../utils/otherfunctions';
 
 const {width} = Dimensions.get('window');
 

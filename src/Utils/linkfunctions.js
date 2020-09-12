@@ -7,7 +7,7 @@ import {roomCreate, getNextRoomId} from './dbfunctions';
 //build link
 async function buildLinkShort(roomTitle, memberCount) {
   var roomId;
-    await getNextRoomId().then(transaction => {
+  await getNextRoomId().then(transaction => {
     //get roomCount from firebase db and increment
     console.log('transaction: ' + JSON.stringify(transaction));
     if (transaction.committed) {
@@ -17,7 +17,7 @@ async function buildLinkShort(roomTitle, memberCount) {
     }
   });
 
-  console.log("roomId: "+roomId);
+  console.log('roomId: ' + roomId);
   //create link with hashed parameters
   const link = await dynamicLinks().buildShortLink({
     link:
@@ -33,7 +33,7 @@ async function buildLinkShort(roomTitle, memberCount) {
     },
     ios: {
       bundleId: 'com.ping',
-    }
+    },
   });
   return link; //returns final dynamic link with hashed parameters. users see this link. For example: https://votepls.page.link/bV8SjD8CR1c3dbz29.
   //(See ../Tests/TestFront.js for receiving and parsing dynamic links)

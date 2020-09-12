@@ -12,7 +12,7 @@ export default function ManuFlatList1() {
   function selectedItems(index) {
     let renderData = [...selected.renderedData];
     for (let data of renderData) {
-      if (data.id == index) {
+      if (data.id === index) {
         data.selected = data.selected == null ? true : !data.selected;
         break;
       }
