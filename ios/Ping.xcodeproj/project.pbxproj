@@ -17,7 +17,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PingTests.m */; };
-		349914BC250654D2007A7422 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 349914BB250654D2007A7422 /* GoogleService-Info.plist */; };
+		344A95A8251242AE00B2BD74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 344A95A7251242AE00B2BD74 /* GoogleService-Info.plist */; };
 		4D905AFC69436E95C6A07D8E /* libPods-Ping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1625C0EEB9D5CA3305992F6 /* libPods-Ping.a */; };
 		76D94CFBD7C620BD2F1D134C /* libPods-Ping-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6883E9D73BF6C6E114497F8 /* libPods-Ping-tvOSTests.a */; };
 		E0C30380345C6125E8596CA0 /* libPods-Ping-PingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E41DC3B23CB4E0B373C04A6 /* libPods-Ping-PingTests.a */; };
@@ -56,8 +56,7 @@
 		2D02E4901E0B4A5D006451C7 /* Ping-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ping-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DFFD0C3CBEAC91C8CAAC96 /* Pods-Ping-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Ping-tvOS/Pods-Ping-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		32CA31E5AD6F93F29CA67F2F /* Pods-Ping-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Ping-tvOSTests/Pods-Ping-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		349914BB250654D2007A7422 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		34F7F73925064D7C004F7380 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		344A95A7251242AE00B2BD74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B30B37918734CEEA11888C3 /* Pods-Ping-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Ping-tvOS/Pods-Ping-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5814BE01399531B0A5F9D332 /* Pods-Ping-PingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping-PingTests.release.xcconfig"; path = "Target Support Files/Pods-Ping-PingTests/Pods-Ping-PingTests.release.xcconfig"; sourceTree = "<group>"; };
 		82F7ACD5AA074DC0DE1AF8F1 /* Pods-Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.debug.xcconfig"; path = "Target Support Files/Pods-Ping/Pods-Ping.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,10 +134,10 @@
 		13B07FAE1A68108700A75B9A /* Ping */ = {
 			isa = PBXGroup;
 			children = (
-				34F7F73925064D7C004F7380 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				344A95A7251242AE00B2BD74 /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -185,7 +184,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				349914BB250654D2007A7422 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Ping */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PingTests */,
@@ -355,7 +353,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				349914BC250654D2007A7422 /* GoogleService-Info.plist in Resources */,
+				344A95A8251242AE00B2BD74 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,7 +47,7 @@ export default function Create({route, navigation}) {
   };
 
   const createRoom = () => {
-    buildLinkShort('hi', 1)
+    buildLinkShort(title, people)
       .then(res => {
         console.log('link: ' + res);
       })
