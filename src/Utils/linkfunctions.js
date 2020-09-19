@@ -27,7 +27,7 @@ async function buildLinkShort(roomTitle, memberCount) {
       roomTitle +
       '&memberCount=' +
       memberCount, //link parameter. add parameters here
-    domainUriPrefix: 'https://voteping.page.link/', //the whole 'link' string will be added as a parameter to this url.
+    domainUriPrefix: 'https://voteping.page.link', //the whole 'link' string will be added as a parameter to this url.
     android: {
       packageName: 'com.ping',
     },

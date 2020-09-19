@@ -17,6 +17,7 @@ export default function Create({route, navigation}) {
   const [title, setTitle] = React.useState('');
   const [people, setPeople] = React.useState();
   const [checked, setChecked] = React.useState(false);
+  const [link, setLink] = React.useState('');
 
   const exitAlert = () =>
     Alert.alert(
@@ -50,6 +51,7 @@ export default function Create({route, navigation}) {
     buildLinkShort(title, people)
       .then(res => {
         console.log('link: ' + res);
+        setLink(res);
       })
       .catch(function(error) {
         console.log(
@@ -86,6 +88,7 @@ export default function Create({route, navigation}) {
             mode="flat"
           />
         </View>
+        <Text>{link}</Text>
         {/* <View style={container.divider}>
           <Text style={container.text}>3. 이동 수단</Text> */}
         {/* <Picker
