@@ -5,7 +5,7 @@ import {useValue} from 'react-native-redash';
 import {roomCreate, getNextRoomId} from './dbfunctions';
 
 //build link
-async function buildLinkShort(roomTitle, memberCount) {
+async function buildLinkShort(roomTitle, roomSize) {
   var roomId;
   await getNextRoomId().then(transaction => {
     //get roomCount from firebase db and increment
@@ -13,7 +13,7 @@ async function buildLinkShort(roomTitle, memberCount) {
     if (transaction.committed) {
       //if successfully get and increment,
       roomId = transaction.snapshot.val();
-      roomCreate(roomId, roomTitle, memberCount); //push room settings to fb database
+      roomCreate(roomId, roomTitle, roomSize); //push room settings to fb database
     }
   });
 
@@ -25,8 +25,8 @@ async function buildLinkShort(roomTitle, memberCount) {
       roomId +
       '&roomTitle=' +
       roomTitle +
-      '&memberCount=' +
-      memberCount, //link parameter. add parameters here
+      '&roomSize=' +
+      roomSize, //link parameter. add parameters here
     domainUriPrefix: 'https://voteping.page.link', //the whole 'link' string will be added as a parameter to this url.
     android: {
       packageName: 'com.ping',
