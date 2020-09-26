@@ -24,7 +24,7 @@ export default function TestFront({navigation}) {
                 roomTitle: param.roomTitle,
               });
             } else {
-              //if link has no 'roomTitle' parameter, navigate to create room screen
+              //if link has no 'roomId' parameter, navigate to create room screen
               navigation.navigate('LinkCreate');
             }
           } else {
