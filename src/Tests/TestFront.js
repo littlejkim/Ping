@@ -3,14 +3,6 @@ import {View, Text} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {
-  testGet,
-  testSet,
-  testIncre,
-  testDecre,
-  buildLink,
-  parseUrl,
-} from '../utils/fbtestfunctions';
 import {urlJson} from '../utils/linkfunctions';
 
 //Dynamic link receiving example
@@ -19,17 +11,17 @@ export default function TestFront({navigation}) {
     dynamicLinks()
       .getInitialLink()
       .then(link => {
-        //this 'link' object includes url(the 'link' parameter from buildShortLink()), appname, etc.
-        console.log(JSON.stringify(link));
+        //this 'link' object includes url(the returned link from buildShortLink()), appname, etc.
+        console.log("link:\n "+JSON.stringify(link));
         if (link) {
           //if user opened the app by dynamic link
           if (link.url.match('https://vote.pls.page.link/.*')) {
-            let urlJson = urlJson(link.url); //Jsonify parameters of the link
-            if (urlJson.roomTitle) {
-              //if link has 'roomTitle' parameter, navigate to next screen with the parameters
+            let param = urlJson(link.url); //Jsonify parameters of the link
+            if (param.roomId) {
+              //if link has 'roomId' parameter, enter room and navigate to next screen with the parameters
               navigation.navigate('LinkTest', {
-                roomTitle: urlJson.roomTitle,
-                memberCount: urlJson.memberCount,
+                roomId: param.roomId,
+                roomTitle: param.roomTitle,
               });
             } else {
               //if link has no 'roomTitle' parameter, navigate to create room screen
