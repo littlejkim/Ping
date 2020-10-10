@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Alert,
-  StyleSheet,
-  Picker,
-} from 'react-native';
+import Clipboard from '@react-native-community/clipboard';
+
+import {Text, View, TouchableOpacity, Alert, StyleSheet} from 'react-native';
 import styles from '../constants/styles';
 import CustomButton from '../components/CustomButton';
 import {TextInput, HelperText, Checkbox} from 'react-native-paper';
@@ -17,7 +12,7 @@ export default function Create({route, navigation}) {
   const [title, setTitle] = React.useState('');
   const [people, setPeople] = React.useState();
   const [checked, setChecked] = React.useState(false);
-  const [link, setLink] = React.useState('');
+  const [copiedText, setCopiedText] = useState('');
 
   const exitAlert = () =>
     Alert.alert(
@@ -42,16 +37,19 @@ export default function Create({route, navigation}) {
       ),
     });
   });
+  const copyToClipboard = () => {
+    Clipboard.setString('hello world');
+  };
 
-  const titleHasErrors = () => {
-    return title.includes('@');
+  const fetchCopiedText = async () => {
+    const text = await Clipboard.getString();
+    setCopiedText(text);
   };
 
   const createRoom = () => {
     buildLinkShort(title, people)
       .then(res => {
-        console.log('link: ' + res);
-        setLink(res);
+        navigation.navigate('CreateResult', {data: res});
       })
       .catch(function(error) {
         console.log(
@@ -74,9 +72,6 @@ export default function Create({route, navigation}) {
             onChangeText={text => setTitle(text)}
             mode="flat"
           />
-          <HelperText type="error" visible={titleHasErrors()}>
-            Email address is invalid!
-          </HelperText>
         </View>
         <View style={container.divider}>
           <Text style={container.text}>2. 인원 수</Text>
@@ -88,44 +83,7 @@ export default function Create({route, navigation}) {
             mode="flat"
           />
         </View>
-        <Text>{link}</Text>
-        {/* <View style={container.divider}>
-          <Text style={container.text}>3. 이동 수단</Text> */}
-        {/* <Picker
-              selectedValue={title}
-              style={{height: 50, width: 100}}
-              onValueChange={(itemValue, itemIndex) => setTitle(itemValue)}>
-              <Picker.Item label="도보" value="foot" />
-              <Picker.Item label="차량" value="car" />
-              <Picker.Item label="버스" value="bus" />
-              <Picker.Item label="지하철" value="subway" />
-            </Picker> */}
-        {/* <View style={{paddingLeft: 10, paddingTop: 10}}>
-            <RNPickerSelect
-              placeholder={{
-                label: '인원을 선택하세요',
-                value: null,
-              }}
-              onValueChange={value => console.log(value)}
-              items={[
-                {label: 'Football', value: 'football'},
-                {label: 'Baseball', value: 'baseball'},
-                {label: 'Hockey', value: 'hockey'},
-              ]}
-            />
-          </View>
-        </View> */}
-        {/* <View style={container.divider}>
-          <Text style={container.text}>4. 이동 수단</Text>
-          <Checkbox
-            status={checked ? 'checked' : 'unchecked'}
-            onPress={() => {
-              setChecked(!checked);
-            }}
-          />
-        </View> */}
       </View>
-
       <View style={styles.footer}>
         <CustomButton
           buttonColor={'#023e71'}

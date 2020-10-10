@@ -36,7 +36,7 @@ const footer = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     backgroundColor: '#fff',
-    marginBottom: 40,
+    marginBottom: 30,
     marginStart: 20,
     marginEnd: 20,
   },
@@ -45,9 +45,9 @@ const footer = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#023e71',
+    backgroundColor: '#6495ED',
     marginBottom: 3,
-    borderRadius: 13,
+    borderRadius: 50,
   },
   joinTitle: {
     fontSize: 19,
@@ -57,10 +57,11 @@ const footer = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
   },
   createTitle: {
     fontSize: 17,
+    textDecorationLine: 'underline',
     color: '#707070',
   },
 });

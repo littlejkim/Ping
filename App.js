@@ -9,7 +9,7 @@ import Menu from './src/screens/Menu';
 import Price from './src/screens/Price';
 import Distance from './src/screens/Distance';
 import Results from './src/screens/Results';
-
+import CreateResult from './src/screens/CreateResult';
 import Dbtest from './src/Tests/Dbtest2';
 import LinkTest from './src/Tests/LinkTest';
 import LinkCreate from './src/Tests/LinkCreate';
@@ -40,6 +40,11 @@ export default function App() {
             name="Create"
             component={Create}
             options={{title: '방 생성'}}
+          />
+          <Stack.Screen
+            name="CreateResult"
+            component={CreateResult}
+            options={{title: '성공'}}
           />
           <Stack.Screen
             name="Join"
