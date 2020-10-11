@@ -13,6 +13,7 @@ export default function Create({route, navigation}) {
   const [people, setPeople] = React.useState();
   const [checked, setChecked] = React.useState(false);
   const [copiedText, setCopiedText] = useState('');
+  const [titleError, setTitleError] = useState('');
 
   const exitAlert = () =>
     Alert.alert(
@@ -37,13 +38,9 @@ export default function Create({route, navigation}) {
       ),
     });
   });
-  const copyToClipboard = () => {
-    Clipboard.setString('hello world');
-  };
 
-  const fetchCopiedText = async () => {
-    const text = await Clipboard.getString();
-    setCopiedText(text);
+  const titleHasErrors = () => {
+    return title.length > 20;
   };
 
   const createRoom = () => {
@@ -56,8 +53,7 @@ export default function Create({route, navigation}) {
           'There has been a problem with your fetch operation: ' +
             error.message,
         );
-        // ADD THIS THROW error
-        throw error;
+        navigation.navigate('CreateResult', {data: null});
       });
   };
   return (
@@ -72,6 +68,9 @@ export default function Create({route, navigation}) {
             onChangeText={text => setTitle(text)}
             mode="flat"
           />
+          <HelperText type="error" visible={titleHasErrors()}>
+            잘못되었습니다.
+          </HelperText>
         </View>
         <View style={container.divider}>
           <Text style={container.text}>2. 인원 수</Text>

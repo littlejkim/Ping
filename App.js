@@ -44,7 +44,7 @@ export default function App() {
           <Stack.Screen
             name="CreateResult"
             component={CreateResult}
-            options={{title: '성공'}}
+            options={{title: '결과'}}
           />
           <Stack.Screen
             name="Join"

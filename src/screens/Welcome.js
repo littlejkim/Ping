@@ -1,12 +1,17 @@
 import React from 'react';
-import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, View, Text, StyleSheet, Image} from 'react-native';
 import styles from '../constants/styles';
 
 export default function Welcome({navigation}) {
   return (
     <View style={footer.container}>
       <View style={styles.content}>
-        <Text style={{fontSize: 20}}>TODO: 인트로 사진</Text>
+        <Text style={footer.title}>핑</Text>
+        <Text style={footer.text}>환영합니다!</Text>
+      <Image
+              style={{width: 250, height: 250}}
+              source={require('../images/main2.png')}
+            />
       </View>
       <View style={footer.footer}>
         <TouchableOpacity
@@ -30,6 +35,20 @@ const footer = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  text: {
+    textAlign: 'center',
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 15,
+    marginBottom: 30,
+    fontSize: 18,
+    color: 'black',
   },
   footer: {
     flex: 1.7,
