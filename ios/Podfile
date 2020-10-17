@@ -80,6 +80,8 @@ target 'Ping' do
   pod 'Firebase/DynamicLinks'
 
 
+  pod 'RNSnackbar', :path => '../node_modules/react-native-snackbar'
+
   target 'PingTests' do
     inherit! :complete
     # Pods for testing

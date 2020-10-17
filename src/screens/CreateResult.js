@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useContext} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,10 +9,15 @@ import {
   Image,
   Alert,
 } from 'react-native';
+import Clipboard from '@react-native-community/clipboard';
 
 export default function Results({route, navigation}) {
   const {data} = route.params;
-
+  useEffect(() => {
+    if (data != null) {
+      Clipboard.setString(data);
+    }
+  }, []);
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -25,7 +30,6 @@ export default function Results({route, navigation}) {
     });
   });
 
-  
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -46,7 +50,7 @@ export default function Results({route, navigation}) {
     }
   };
   if (data != null) {
-    console.log("link: " + data);
+    console.log('link: ' + data);
     return (
       <View style={{flex: 1}}>
         <View style={container.container}>
@@ -93,7 +97,7 @@ export default function Results({route, navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-    )
+    );
   }
 }
 
