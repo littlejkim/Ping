@@ -3,13 +3,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 // import Dbtest from './src/Tests/Dbtest';
 import Create from './src/screens/Create';
+import CreateResult from './src/screens/CreateResult';
+import CreateQR from './src/screens/CreateQR';
 import Welcome from './src/screens/Welcome';
 import Join from './src/screens/Join';
 import Menu from './src/screens/Menu';
 import Price from './src/screens/Price';
 import Distance from './src/screens/Distance';
 import Results from './src/screens/Results';
-import CreateResult from './src/screens/CreateResult';
 import Dbtest from './src/Tests/Dbtest2';
 import LinkTest from './src/Tests/LinkTest';
 import LinkCreate from './src/Tests/LinkCreate';
@@ -45,6 +46,11 @@ export default function App() {
             name="CreateResult"
             component={CreateResult}
             options={{title: '결과'}}
+          />
+          <Stack.Screen
+            name="CreateQR"
+            component={CreateQR}
+            options={{title: 'QR 코드'}}
           />
           <Stack.Screen
             name="Join"

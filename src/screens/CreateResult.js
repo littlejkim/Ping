@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Share,
   Image,
-  Alert,
 } from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 
@@ -52,48 +51,53 @@ export default function Results({route, navigation}) {
   if (data != null) {
     console.log('link: ' + data);
     return (
-      <View style={{flex: 1}}>
-        <View style={container.container}>
-          <View style={container.top}>
-            <Image
-              style={{width: 200, height: 200}}
-              source={require('../images/happy.gif')}
-            />
-            <Text style={container.title}>성공</Text>
-            <Text style={container.text}>
-              방 만드는데 성공하셨습니다!{'\n'}QR코드 또는 URL을 공유해보시길
-              바랍니다!
-            </Text>
-          </View>
+      <View style={container.container}>
+        <View style={container.top}>
+          <Image
+            style={{width: 200, height: 200}}
+            source={require('../images/happy.gif')}
+          />
+          <Text style={container.title}>성공</Text>
+          <Text style={container.text}>
+            방 만드는데 성공하셨습니다!{'\n'}QR코드 또는 URL을 공유해보시길
+            바랍니다!
+          </Text>
+        </View>
+        <View style={container.footer}>
           <TouchableOpacity
-            style={container.successButton}
-            onPress={onShare}
+            style={container.footerSuccessButton}
+            onPress={() => navigation.navigate('CreateQR', {link: data})}
             activeOpacity={0.7}>
-            <Text style={container.buttonText}>공유하기</Text>
+            <Text style={container.footerButtonTitle}>QR 코드 생성</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={container.createButton}
+            onPress={() => onShare()}
+            activeOpacity={0.5}>
+            <Text style={container.createTitle}>URL 공유하기</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   } else {
     return (
-      <View style={{flex: 1}}>
-        <View style={container.container}>
-          <View style={container.top}>
-            <Image
-              style={{width: 200, height: 200}}
-              source={require('../images/sad.gif')}
-            />
-            <Text style={container.title}>실패</Text>
-            <Text style={container.text}>
-              방 만드는데 실패하셨습니다.{'\n'}잠시 후 다시 시도해주시기
-              바랍니다.
-            </Text>
-          </View>
+      <View style={container.container}>
+        <View style={container.top}>
+          <Image
+            style={{width: 200, height: 200}}
+            source={require('../images/sad.gif')}
+          />
+          <Text style={container.title}>실패</Text>
+          <Text style={container.text}>
+            방 만드는데 실패하셨습니다.{'\n'}잠시 후 다시 시도해주시기 바랍니다.
+          </Text>
+        </View>
+        <View style={container.footer}>
           <TouchableOpacity
-            style={container.failureButton}
-            onPress={() => navigation.navigate('Create')}
-            activeOpacity={0.7}>
-            <Text style={container.buttonText}>다시하기</Text>
+            style={container.footerFailureButton}
+            onPress={() => navigation.popToTop()}
+            activeOpacity={0.5}>
+            <Text style={container.footerButtonTitle}>다시하기</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -104,14 +108,23 @@ export default function Results({route, navigation}) {
 const container = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'stretch',
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
   },
   top: {
-    flex: 4,
+    flex: 9,
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 30,
+    paddingTop: 10,
+  },
+  footer: {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 20,
+    marginStart: 20,
+    marginEnd: 20,
   },
   title: {
     marginTop: 25,
@@ -128,30 +141,33 @@ const container = StyleSheet.create({
     fontSize: 18,
     color: 'black',
   },
-  buttonText: {
-    fontSize: 22,
+  footerSuccessButton: {
+    flex: 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#6495ED',
+    borderRadius: 50,
+  },
+  footerFailureButton: {
+    flex: 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#de3030',
+    borderRadius: 50,
+  },
+  footerButtonTitle: {
+    fontSize: 19,
     color: 'white',
   },
-  successButton: {
-    flex: 0.4,
-    flexDirection: 'row',
-    justifyContent: 'center',
+  createButton: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#6495ED',
-    borderRadius: 30,
-    marginLeft: 15,
-    marginRight: 15,
-    marginBottom: 30,
+    justifyContent: 'center',
+    borderRadius: 20,
   },
-  failureButton: {
-    flex: 0.4,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#de3030',
-    borderRadius: 30,
-    marginLeft: 15,
-    marginRight: 15,
-    marginBottom: 30,
+  createTitle: {
+    fontSize: 17,
+    textDecorationLine: 'underline',
+    color: '#707070',
   },
 });

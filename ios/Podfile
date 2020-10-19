@@ -82,6 +82,10 @@ target 'Ping' do
 
   pod 'RNSnackbar', :path => '../node_modules/react-native-snackbar'
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+
+
   target 'PingTests' do
     inherit! :complete
     # Pods for testing

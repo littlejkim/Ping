@@ -72,23 +72,22 @@ export default function Create({route, navigation}) {
             잘못되었습니다.
           </HelperText>
         </View>
-        <View style={container.divider}>
-          <Text style={container.text}>2. 인원 수</Text>
-          <TextInput
-            style={container.input}
-            keyboardType={'numeric'}
-            value={people}
-            onChangeText={text => setPeople(text)}
-            mode="flat"
-          />
-        </View>
-      </View>
-      <View style={styles.footer}>
-        <CustomButton
-          buttonColor={'#023e71'}
-          title={'생성'}
-          onPress={() => createRoom()}
+        <Text style={container.text}>2. 인원 수</Text>
+        <TextInput
+          style={container.input}
+          keyboardType={'numeric'}
+          value={people}
+          onChangeText={text => setPeople(text)}
+          mode="flat"
         />
+      </View>
+      <View style={container.footer}>
+        <TouchableOpacity
+          style={container.nextButton}
+          onPress={() => createRoom()}
+          activeOpacity={0.5}>
+          <Text style={container.nextButtonTitle}>생성하기</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -96,35 +95,49 @@ export default function Create({route, navigation}) {
 
 const container = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 9,
     paddingLeft: 20,
     paddingRight: 20,
     paddingTop: 10,
-    // paddingBottom: 20,
-    // justifyContent: 'flex-start',
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
   },
   text: {fontSize: 23, marginBottom: 10},
   button: {
     height: 50,
     flexDirection: 'row',
     marginEnd: 30,
-    // marginBottom: 20,
-    // justifyContent: 'flex-end',
     backgroundColor: 'white',
     borderRadius: 5,
   },
   input: {
     backgroundColor: 'transparent',
     height: 50,
-    // marginBottom: 30,
   },
   picker: {
     flex: 1,
     paddingTop: 30,
-    // alignItems: 'center',
   },
   divider: {
     paddingBottom: 30,
+  },
+  footer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 30,
+    marginStart: 20,
+    marginEnd: 20,
+  },
+  nextButton: {
+    flex: 0.9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#6495ED',
+    borderRadius: 50,
+  },
+  nextButtonTitle: {
+    fontSize: 19,
+    color: 'white',
   },
 });

@@ -6,6 +6,7 @@ import {
   Dimensions,
   Alert,
   StyleSheet,
+  Image,
 } from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 import Snackbar from 'react-native-snackbar';
@@ -14,23 +15,23 @@ const width = Dimensions.get('window').width / 2 - 20;
 
 export default function Join({route, navigation}) {
   const {data} = route.params;
-  useEffect(() => {
-    if (data != null) {
-      Snackbar.show({
-        text: '클립보드에 있는 방으로 바로 들어가시겠습니까?',
-        duration: Snackbar.LENGTH_INDEFINITE,
-        action: {
-          text: '바로가기',
-          textColor: 'green',
-          onPress: () => {
-            /* Do something. */
-          },
-        },
-      });
-    } else {
-      console.log('not our URL');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (data != null) {
+  //     Snackbar.show({
+  //       text: '클립보드에 있는 방으로 바로 들어가시겠습니까?',
+  //       duration: Snackbar.LENGTH_INDEFINITE,
+  //       action: {
+  //         text: '바로가기',
+  //         textColor: 'green',
+  //         onPress: () => {
+  //           /* Do something. */
+  //         },
+  //       },
+  //     });
+  //   } else {
+  //     console.log('not our URL');
+  //   }
+  // }, []);
 
   const exitAlert = () =>
     Alert.alert(
@@ -62,16 +63,26 @@ export default function Join({route, navigation}) {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          style={styles.buttonQR}
-          activeOpacity={0.7}
-          onPress={() => navigation.navigate('Price')}>
-          <Text style={styles.text}>QR Code</Text>
+          onPress={() => navigation.navigate('Create')}
+          activeOpacity={0.5}>
+          <Image
+            style={{width: 230, height: 230}}
+            source={require('../images/qr.png')}
+          />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonURL} activeOpacity={0.7}>
-          <Text style={styles.text}>URL</Text>
+
+        <Text style={{fontSize: 20, marginTop: 20, marginBottom: 15}}>
+          또는
+        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Create')}
+          activeOpacity={0.5}>
+          <Image
+            style={{width: 250, height: 250}}
+            source={require('../images/url.jpg')}
+          />
         </TouchableOpacity>
       </View>
-      <View style={{flex: 1}} />
     </View>
   );
 }
@@ -79,31 +90,16 @@ export default function Join({route, navigation}) {
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: '#fff'},
   subContainer: {
-    flex: 1,
+    flex: 0,
     paddingLeft: 20,
     paddingTop: 40,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
   },
   buttonContainer: {
-    flex: 2,
+    flex: 12,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  buttonQR: {
-    width: width + 100,
-    height: width + 100,
-    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#023e71',
   },
-  buttonURL: {
-    width: width + 100,
-    height: width - 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'gray',
-  },
+
   text: {fontSize: 18, color: 'white'},
 });
