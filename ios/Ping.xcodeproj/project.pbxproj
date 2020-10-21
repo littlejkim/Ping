@@ -17,6 +17,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PingTests.m */; };
+		3402039B254066090035C371 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3402039A254066090035C371 /* images */; };
 		344A95A8251242AE00B2BD74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 344A95A7251242AE00B2BD74 /* GoogleService-Info.plist */; };
 		7739BB6A645068213158A879 /* libPods-Ping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 820225035FDE5F1096EFF99B /* libPods-Ping.a */; };
 		AE751636F08E7D8DC2C69C43 /* libPods-Ping-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB763F5B4F8EFBBCE2E788 /* libPods-Ping-tvOS.a */; };
@@ -59,6 +60,7 @@
 		1EA880CD60957FF1BA100527 /* Pods-Ping-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Ping-tvOSTests/Pods-Ping-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Ping-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ping-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Ping-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ping-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3402039A254066090035C371 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../src/assets/images; sourceTree = "<group>"; };
 		344A95A7251242AE00B2BD74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		674B8DC650D9E3C93105E49E /* Pods-Ping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.release.xcconfig"; path = "Target Support Files/Pods-Ping/Pods-Ping.release.xcconfig"; sourceTree = "<group>"; };
 		70C8160181A29B90D61D3BE7 /* Pods-Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ping.debug.xcconfig"; path = "Target Support Files/Pods-Ping/Pods-Ping.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				3402039A254066090035C371 /* images */,
 				13B07FAE1A68108700A75B9A /* Ping */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PingTests */,
@@ -305,6 +308,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = V54GW3S66H;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -351,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3402039B254066090035C371 /* images in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				344A95A8251242AE00B2BD74 /* GoogleService-Info.plist in Resources */,
@@ -750,6 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54GW3S66H;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -762,7 +768,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.PingTesty;
 				PRODUCT_NAME = Ping;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -777,6 +783,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54GW3S66H;
 				INFOPLIST_FILE = Ping/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -784,7 +791,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.PingTesty;
 				PRODUCT_NAME = Ping;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

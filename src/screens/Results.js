@@ -6,7 +6,7 @@ import {StoreContext} from '../context/DataContext';
 
 export default function Results({navigation}) {
   const state = useContext(StoreContext);
-  console.log("Results: "+JSON.stringify(state));
+  console.log('Results: ' + JSON.stringify(state));
   const exitAlert = () =>
     Alert.alert(
       '경고',

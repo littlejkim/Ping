@@ -9,10 +9,19 @@ import MenuNavigation from '../navigation/MenuNavigation';
 import {StoreContext} from '../context/DataContext';
 
 export const MenuContext = React.createContext();
-let menu={};
+let menu = {};
 export default function Menu({navigation}) {
   const state = useContext(StoreContext);
+
   state.setSelected('TODO');
+  const isFirstRender = React.useRef(true);
+  React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    /*business logic for component did update*/
+  });
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -37,9 +46,9 @@ export default function Menu({navigation}) {
     });
   });
 
-  const pickSelected = (evt) => {
+  const pickSelected = evt => {
     console.log(evt);
-  }
+  };
   return (
     <MenuContext.Provider value={{menuData}}>
       <View style={styles.menuContainer}>

@@ -15,7 +15,7 @@ export default function Price({navigation}) {
       isFirstRender.current = false;
       return;
     }
-    /*business logic for component did update*/
+    console.log('url set to ' + state.url);
   });
   const exitAlert = () =>
     Alert.alert(
@@ -54,15 +54,14 @@ export default function Price({navigation}) {
 
   const defaultValue = 0;
 
-
   const next = () => {
-    console.log("value: "+value);
+    // console.log('value: ' + value);
     state.setPrice(value);
-    console.log("state: "+JSON.stringify(state));
+    // console.log('state: ' + JSON.stringify(state));
     navigation.navigate('Distance');
   };
   const extractFromPicker = evt => {
-    console.log("event: "+ evt);
+    // console.log('event: ' + evt);
     value = evt;
   };
 

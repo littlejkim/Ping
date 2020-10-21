@@ -15,6 +15,7 @@ import Dbtest from './src/Tests/Dbtest2';
 import LinkTest from './src/Tests/LinkTest';
 import LinkCreate from './src/Tests/LinkCreate';
 import TestFront from './src/Tests/TestFront';
+import testQR from './src/screens/testQR';
 
 import {StoreProvider} from './src/context/DataContext';
 // import {DataContextProvider} from './src/context/DataContext2';
@@ -26,7 +27,7 @@ export default function App() {
     <StoreProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Price"
+          initialRouteName="Welcome"
           screenOptions={{
             headerTintColor: 'black',
             headerStyle: {backgroundColor: '#fff'},
@@ -95,6 +96,11 @@ export default function App() {
           <Stack.Screen
             name="TestFront"
             component={TestFront}
+            options={{title: 'test'}}
+          />
+          <Stack.Screen
+            name="testQR"
+            component={testQR}
             options={{title: 'test'}}
           />
         </Stack.Navigator>

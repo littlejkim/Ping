@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {
   Text,
   View,
@@ -10,29 +10,35 @@ import {
 } from 'react-native';
 import Clipboard from '@react-native-community/clipboard';
 import Snackbar from 'react-native-snackbar';
-
-const width = Dimensions.get('window').width / 2 - 20;
+import {StoreContext} from '../context/DataContext';
 
 export default function Join({route, navigation}) {
+  const state = useContext(StoreContext);
   const {data} = route.params;
-  // useEffect(() => {
-  //   if (data != null) {
-  //     Snackbar.show({
-  //       text: '클립보드에 있는 방으로 바로 들어가시겠습니까?',
-  //       duration: Snackbar.LENGTH_INDEFINITE,
-  //       action: {
-  //         text: '바로가기',
-  //         textColor: 'green',
-  //         onPress: () => {
-  //           /* Do something. */
-  //         },
-  //       },
-  //     });
-  //   } else {
-  //     console.log('not our URL');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (data != null) {
+      Snackbar.show({
+        text: '복사된 있는 방으로 바로 입장하시겠습니까?',
+        duration: Snackbar.LENGTH_INDEFINITE,
+        backgroundColor: '#6495ED',
+        action: {
+          text: '입장하기 >',
+          textColor: 'white',
+          onPress: () => {
+            navigation.navigate('Price');
+            state.setUrl(data.substring(27));
+          },
+        },
+      });
+    } else {
+      console.log('not our URL');
+    }
+  }, []);
 
+  const dismiss = () => {
+    exitAlert();
+    Snackbar.dismiss();
+  };
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -50,7 +56,7 @@ export default function Join({route, navigation}) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{marginRight: 20}} onPress={exitAlert}>
+        <TouchableOpacity style={{marginRight: 20}} onPress={dismiss}>
           <Text style={{color: 'black', fontSize: 15}}>나가기</Text>
         </TouchableOpacity>
       ),
@@ -63,7 +69,7 @@ export default function Join({route, navigation}) {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Create')}
+          onPress={() => navigation.navigate('testQR')}
           activeOpacity={0.5}>
           <Image
             style={{width: 230, height: 230}}

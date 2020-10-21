@@ -43,13 +43,13 @@ export default function Price({navigation}) {
   const defaultValue = 0;
 
   const next = () => {
-    console.log("value1: "+value1);
+    console.log('value1: ' + value1);
     state.setDistance(value1);
-    console.log("state: "+JSON.stringify(state));
+    console.log('state: ' + JSON.stringify(state));
     navigation.navigate('Menu');
   };
   const extractFromPicker = evt => {
-    console.log("event: "+ evt);
+    console.log('event: ' + evt);
     value1 = evt;
   };
 
