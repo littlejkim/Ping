@@ -9,25 +9,9 @@ import MenuNavigation from '../navigation/MenuNavigation';
 import {StoreContext} from '../context/DataContext';
 
 export const MenuContext = React.createContext();
-<<<<<<< HEAD
 let menu = {};
 export default function Menu({navigation}) {
   const state = useContext(StoreContext);
-
-  state.setSelected('TODO');
-  const isFirstRender = React.useRef(true);
-  React.useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    /*business logic for component did update*/
-  });
-=======
-let menu= {};
-export default function Menu({navigation}) {
-  const state = useContext(StoreContext);
->>>>>>> refs/remotes/origin/master
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -52,28 +36,22 @@ export default function Menu({navigation}) {
     });
   });
 
-<<<<<<< HEAD
   const pickSelected = evt => {
-    console.log(evt);
-  };
-=======
-  const pickSelected = (evt) => {
     // console.log("selected menu: "+JSON.stringify(evt));
-    if(evt.selected === true){
-      menu[evt.menu]=1;
-    } else{
+    if (evt.selected === true) {
+      menu[evt.menu] = 1;
+    } else {
       delete menu[evt.menu];
     }
-    console.log("resulting menu json:  "+JSON.stringify(menu));
-  }
+    console.log('resulting menu json:  ' + JSON.stringify(menu));
+  };
 
   const finishVote = () => {
     state.setMenu(menu);
-    navigation.navigate('Results')
-  }
->>>>>>> refs/remotes/origin/master
+    navigation.navigate('Results');
+  };
   return (
-    <MenuContext.Provider value={{menuData,pickSelected}}>
+    <MenuContext.Provider value={{menuData, pickSelected}}>
       <View style={styles.menuContainer}>
         <MenuNavigation />
         <View style={styles.footer}>
