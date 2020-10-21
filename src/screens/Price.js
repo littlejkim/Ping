@@ -6,6 +6,7 @@ import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
 import {StoreContext} from '../context/DataContext';
 
+let value;
 export default function Price({navigation}) {
   const state = useContext(StoreContext);
   const isFirstRender = React.useRef(true);
@@ -53,12 +54,15 @@ export default function Price({navigation}) {
 
   const defaultValue = 0;
 
-  let value;
+
   const next = () => {
+    console.log("value: "+value);
     state.setPrice(value);
+    console.log("state: "+JSON.stringify(state));
     navigation.navigate('Distance');
   };
   const extractFromPicker = evt => {
+    console.log("event: "+ evt);
     value = evt;
   };
 

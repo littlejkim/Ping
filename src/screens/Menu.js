@@ -9,7 +9,7 @@ import MenuNavigation from '../navigation/MenuNavigation';
 import {StoreContext} from '../context/DataContext';
 
 export const MenuContext = React.createContext();
-
+let menu={};
 export default function Menu({navigation}) {
   const state = useContext(StoreContext);
   state.setSelected('TODO');
@@ -36,6 +36,10 @@ export default function Menu({navigation}) {
       ),
     });
   });
+
+  const pickSelected = (evt) => {
+    console.log(evt);
+  }
   return (
     <MenuContext.Provider value={{menuData}}>
       <View style={styles.menuContainer}>

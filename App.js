@@ -26,7 +26,7 @@ export default function App() {
     <StoreProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Welcome"
+          initialRouteName="Price"
           screenOptions={{
             headerTintColor: 'black',
             headerStyle: {backgroundColor: '#fff'},

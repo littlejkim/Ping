@@ -6,6 +6,7 @@ import CustomButton from '../components/CustomButton';
 import Picker from '../components/picker/Picker';
 import {StoreContext} from '../context/DataContext';
 
+let value1;
 export default function Price({navigation}) {
   const state = useContext(StoreContext);
   const exitAlert = () =>
@@ -40,15 +41,18 @@ export default function Price({navigation}) {
   ];
 
   const defaultValue = 0;
-  let value;
+
   const next = () => {
-    state.setDistance(value);
+    console.log("value1: "+value1);
+    state.setDistance(value1);
+    console.log("state: "+JSON.stringify(state));
     navigation.navigate('Menu');
   };
-
   const extractFromPicker = evt => {
-    value = evt;
+    console.log("event: "+ evt);
+    value1 = evt;
   };
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <View
