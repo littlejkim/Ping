@@ -8,9 +8,9 @@ import MenuFlatList3 from '../components/menus/MenuFlatList3';
 const Tab = createMaterialTopTabNavigator();
 
 export default function MenuNavigation() {
-  const {menuData} = React.useContext(MenuContext);
+  const {menuData,pickSelected} = React.useContext(MenuContext);
   return (
-    <MenuContext.Provider value={{menuData}}>
+    <MenuContext.Provider value={{menuData,pickSelected}}>
       <Tab.Navigator>
         <Tab.Screen name="중식" component={MenuFlatList1} />
         <Tab.Screen name="일식" component={MenuFlatList2} />

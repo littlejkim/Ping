@@ -96,6 +96,20 @@ function memberCountCheck(roomId) {
 }
 
 //델타 1
+/* 
+  newVote = {
+    menu:{
+      menu1:0,
+      menu2:1,
+      menu3:0,
+      .
+      .
+
+    },
+    distance: 2,
+    price: 4
+  }
+*/
 async function getDeltaOBJ(newVote, roomId) {
   var instance = await iid().get();
   var deltaOBJ = {};
@@ -104,16 +118,16 @@ async function getDeltaOBJ(newVote, roomId) {
     if (snapshot.exists) {
       var oldVote = snapshot.val();
 
-      //food delta
-      for (var key in newVote.food) {
-        if (oldVote.food.hasOwnProperty(key)) {
-          delete oldVote.food[key];
+      //menu delta
+      for (var key in newVote.menu) {
+        if (oldVote.menu.hasOwnProperty(key)) {
+          delete oldVote.menu[key];
         } else {
-          deltaOBJ.food[key] = 1;
+          deltaOBJ.menu[key] = 1;
         }
       }
-      for (var key in oldVote.food) {
-        deltaOBJ.food[key] = -1;
+      for (var key in oldVote.menu) {
+        deltaOBJ.menu[key] = -1;
       }
 
       //distance delta
@@ -128,8 +142,8 @@ async function getDeltaOBJ(newVote, roomId) {
         deltaOBJ.price[newVote.price] = 1;
       }
     } else {
-      for (var key in newVote.food) {
-        deltaOBJ.food[key] = 1;
+      for (var key in newVote.menu) {
+        deltaOBJ.menu[key] = 1;
       }
       deltaOBJ.distance[newVote.distance] = 1;
       deltaOBJ.price[newVote.price] = 1;
@@ -154,8 +168,8 @@ function voteToResult(deltaOBJ, roomId) {
   return reference.transaction(
     results => {
       var newResult = results;
-      for (var key in deltaOBJ.food) {
-        newResult.food[key] = newResult.food[key] + deltaOBJ.food[key];
+      for (var key in deltaOBJ.menu) {
+        newResult.menu[key] = newResult.menu[key] + deltaOBJ.menu[key];
       }
       for (var key in deltaOBJ.distance) {
         newResult.distance[key] =

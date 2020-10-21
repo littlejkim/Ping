@@ -7,7 +7,7 @@ const StoreProvider = ({children}) => {
   const [device, setDevice] = useState('');
   const [price, setPrice] = useState('');
   const [distance, setDistance] = useState('');
-  const [selected, setSelected] = useState([]);
+  const [menu, setMenu] = useState([]);
   const store = {
     key,
     setKey,
@@ -17,8 +17,8 @@ const StoreProvider = ({children}) => {
     setPrice,
     distance,
     setDistance,
-    selected,
-    setSelected,
+    menu,
+    setMenu,
   };
 
   return (
