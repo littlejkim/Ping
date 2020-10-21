@@ -4,12 +4,12 @@ import styles from '../../constants/menuStyles';
 import {MenuContext} from '../../screens/Menu';
 
 export default function ManuFlatList1() {
-  const {menuData} = React.useContext(MenuContext);
+  const {menuData,pickSelected} = React.useContext(MenuContext);
   const [selected, setSelected] = useState({
     renderedData: menuData.menu1,
   });
 
-  function selectedItems(index) {
+  function selectedItems(item,index) {
     let renderData = [...selected.renderedData];
     for (let data of renderData) {
       if (data.id === index) {
@@ -17,8 +17,8 @@ export default function ManuFlatList1() {
         break;
       }
     }
+    pickSelected(item);
     setSelected({renderedData: renderData});
-    console.log(renderData);
   }
 
   return (
@@ -38,7 +38,7 @@ export default function ManuFlatList1() {
                 ? styles.itemSelected
                 : styles.itemNotSelected
             }
-            onPress={() => selectedItems(index)}>
+            onPress={() => selectedItems(item,index)}>
             <Text style={styles.itemText}>
               {item.id}
               {item.menu}

@@ -3,14 +3,14 @@ import React, {useState} from 'react';
 const StoreContext = React.createContext(null);
 
 const StoreProvider = ({children}) => {
-  const [url, setUrl] = useState('');
+  const [key, setKey] = useState('');
   const [device, setDevice] = useState('');
   const [price, setPrice] = useState('');
   const [distance, setDistance] = useState('');
   const [selected, setSelected] = useState([]);
   const store = {
-    url,
-    setUrl,
+    key,
+    setKey,
     device,
     setDevice,
     price,

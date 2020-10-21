@@ -9,6 +9,7 @@ import MenuNavigation from '../navigation/MenuNavigation';
 import {StoreContext} from '../context/DataContext';
 
 export const MenuContext = React.createContext();
+<<<<<<< HEAD
 let menu = {};
 export default function Menu({navigation}) {
   const state = useContext(StoreContext);
@@ -22,6 +23,11 @@ export default function Menu({navigation}) {
     }
     /*business logic for component did update*/
   });
+=======
+let menu= {};
+export default function Menu({navigation}) {
+  const state = useContext(StoreContext);
+>>>>>>> refs/remotes/origin/master
   const exitAlert = () =>
     Alert.alert(
       '경고',
@@ -46,18 +52,35 @@ export default function Menu({navigation}) {
     });
   });
 
+<<<<<<< HEAD
   const pickSelected = evt => {
     console.log(evt);
   };
+=======
+  const pickSelected = (evt) => {
+    // console.log("selected menu: "+JSON.stringify(evt));
+    if(evt.selected === true){
+      menu[evt.menu]=1;
+    } else{
+      delete menu[evt.menu];
+    }
+    console.log("resulting menu json:  "+JSON.stringify(menu));
+  }
+
+  const finishVote = () => {
+    state.setMenu(menu);
+    navigation.navigate('Results')
+  }
+>>>>>>> refs/remotes/origin/master
   return (
-    <MenuContext.Provider value={{menuData}}>
+    <MenuContext.Provider value={{menuData,pickSelected}}>
       <View style={styles.menuContainer}>
         <MenuNavigation />
         <View style={styles.footer}>
           <CustomButton
             buttonColor={'#023e71'}
             title={'다음'}
-            onPress={() => navigation.navigate('Results')}
+            onPress={finishVote}
           />
         </View>
       </View>
