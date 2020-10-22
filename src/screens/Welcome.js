@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {TouchableOpacity, View, Text, StyleSheet, Image} from 'react-native';
 import styles from '../constants/styles';
 import Clipboard from '@react-native-community/clipboard';
 import {urlJson} from '../utils/linkfunctions';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
+import {StoreContext} from '../context/DataContext';
 
 export default function Welcome({navigation}) {
   const [copiedText, setCopiedText] = useState('');
+  const state = useContext(StoreContext);
   async function getText() {
     const text = await Clipboard.getString();
     if (text.substring(0, 21) === 'https://voteping.page') {
@@ -42,11 +44,9 @@ export default function Welcome({navigation}) {
           let param = urlJson(link.url); //Jsonify parameters of the link
           console.log(param);
           if (param.roomId) {
-            //if link has 'roomId' parameter, enter room and navigate to next screen with the parameters
-            navigation.navigate('Price', {
-              roomId: param.roomId,
-              roomTitle: param.roomTitle,
-            });
+            //if link has 'roomId' parameter, update context url and navigate to 'price'
+            state.setUrl(link.url);
+            navigation.navigate('Price');
           } else {
             //if link has no 'roomId' parameter, navigate to create room screen
             navigation.navigate('Welcome');
@@ -63,18 +63,16 @@ export default function Welcome({navigation}) {
         console.log("not through link");
       }
     });
-    
+
   const unsubscribe = dynamicLinks().onLink((link) => {
     console.log("onLink: "+ link.url);
     if (link.url.match('https://vote.pls.page.link/.*')) {
       let param = urlJson(link.url); //Jsonify parameters of the link
       console.log(param)
       if (param.roomId) {
-        //if link has 'roomId' parameter, enter room and navigate to next screen with the parameters
-        navigation.navigate('Price', {
-          roomId: param.roomId,
-          roomTitle: param.roomTitle,
-        });
+        //if link has 'roomId' parameter, update context url and navigate to 'price'
+        state.setUrl(link.url);
+        navigation.navigate('Price');
       } else{
         navigation.navigate('Welcome');
         console.log("no roomId");
