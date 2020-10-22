@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View, Text, StyleSheet, Image} from 'react-native';
 import styles from '../constants/styles';
 import Clipboard from '@react-native-community/clipboard';
+import {urlJson} from '../utils/linkfunctions';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 export default function Welcome({navigation}) {
   const [copiedText, setCopiedText] = useState('');
@@ -13,8 +15,76 @@ export default function Welcome({navigation}) {
       setCopiedText(null);
     }
   }
+  // const handleDynamicLink = link => {
+  //   console.log("onLink: "+ link.url);
+  //   if (link.url.match('https://vote.pls.page.link/.*')) {
+  //     let param = urlJson(link.url); //Jsonify parameters of the link
+  //     console.log(param)
+  //     if (param.roomId) {
+  //       //if link has 'roomId' parameter, enter room and navigate to next screen with the parameters
+  //       navigation.navigate('Price', {
+  //         roomId: param.roomId,
+  //         roomTitle: param.roomTitle,
+  //       });
+  //     }
+  //   }
+  // }
   useEffect(() => {
     getText();
+    dynamicLinks()
+    .getInitialLink()
+    .then(link => {
+      //this 'link' object includes url(the returned link from buildShortLink()), appname, etc.
+      console.log("getInitialLink: "+ link.url);
+      if (link) {
+        //if user opened the app by dynamic link
+        if (link.url.match('https://vote.pls.page.link/.*')) {
+          let param = urlJson(link.url); //Jsonify parameters of the link
+          console.log(param);
+          if (param.roomId) {
+            //if link has 'roomId' parameter, enter room and navigate to next screen with the parameters
+            navigation.navigate('Price', {
+              roomId: param.roomId,
+              roomTitle: param.roomTitle,
+            });
+          } else {
+            //if link has no 'roomId' parameter, navigate to create room screen
+            navigation.navigate('Welcome');
+            console.log("no roomId");
+          }
+        } else {
+          //if link does not match, navigate to create room screen
+          navigation.navigate('Welcome');
+          console.log("no match");
+        }
+      } else {
+        //if the user didn't open the app by dynamic link, navigate to create room screen
+        navigation.navigate('Welcome');
+        console.log("not through link");
+      }
+    });
+    
+  const unsubscribe = dynamicLinks().onLink((link) => {
+    console.log("onLink: "+ link.url);
+    if (link.url.match('https://vote.pls.page.link/.*')) {
+      let param = urlJson(link.url); //Jsonify parameters of the link
+      console.log(param)
+      if (param.roomId) {
+        //if link has 'roomId' parameter, enter room and navigate to next screen with the parameters
+        navigation.navigate('Price', {
+          roomId: param.roomId,
+          roomTitle: param.roomTitle,
+        });
+      } else{
+        navigation.navigate('Welcome');
+        console.log("no roomId");
+      }
+    } else{
+        navigation.navigate('Welcome');
+        console.log("no match");
+    }
+  });
+  return () => unsubscribe();
   }, []);
 
   return (

@@ -1,7 +1,4 @@
-import database from '@react-native-firebase/database';
-import iid from '@react-native-firebase/iid';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
-import {useValue} from 'react-native-redash';
 import {roomCreate, getNextRoomId} from './dbfunctions';
 
 //build link
